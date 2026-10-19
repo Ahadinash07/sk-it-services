@@ -5,13 +5,13 @@ import QuoteModal from "./QuoteModal";
 const Ctx = createContext({ open: () => {} });
 export const useQuote = () => useContext(Ctx);
 
-export default function QuoteProvider({ children }) {
+export default function QuoteProvider({ children, content }) {
   const [isOpen, setOpen] = useState(false);
   const open = useCallback(() => setOpen(true), []);
   return (
     <Ctx.Provider value={{ open }}>
       {children}
-      {isOpen && <QuoteModal onClose={() => setOpen(false)} />}
+       {isOpen && <QuoteModal onClose={() => setOpen(false)} content={content} />}
     </Ctx.Provider>
   );
 }

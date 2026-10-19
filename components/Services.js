@@ -2,23 +2,25 @@
 import Icon from "./Icon";
 import A from "./A";
 import Photo from "./Photo";
-import { SERVICES, TRUST_STRIP } from "@/lib/data";
 import { waLink } from "@/lib/whatsapp";
 import { useQuote } from "./QuoteProvider";
 
-export default function Services() {
+export default function Services({ content }) {
   const { open } = useQuote();
+  const section = content.landing.services;
+  const business = content.business;
+  const trustStrip = content.trustStrip || section.trust;
   return (
     <section id="services" className="bg-mist py-14 sm:py-20">
       <div className="wrap">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-[720px]">
-            <p className="eyebrow">Our Core Services</p>
-            <h2 className="h-section mt-4">One Partner.<br /><span className="text-leaf">Complete IT Solutions.</span></h2>
-            <p className="mt-4 max-w-[600px] text-[15px] leading-relaxed text-ink/75 sm:text-base">From computers and accessories to professional repairs and business IT assistance, SK IT Services provides practical technology solutions tailored to your needs.</p>
+             <p className="eyebrow">{section.eyebrow}</p>
+             <h2 className="h-section mt-4">{section.title}<br /><span className="text-leaf">{section.titleAccent}</span></h2>
+             <p className="mt-4 max-w-[600px] text-[15px] leading-relaxed text-ink/75 sm:text-base">{section.description}</p>
           </div>
           <ul className="grid grid-cols-3 gap-2 lg:border-l lg:border-ink/10 lg:pl-8">
-            {TRUST_STRIP.map(([ic, t]) => (
+             {trustStrip.map(([ic, t]) => (
               <li key={t} className="flex flex-col items-center gap-2 text-center text-xs font-semibold sm:px-3 sm:text-sm">
                 <span className="bubble h-12 w-12 sm:h-14 sm:w-14"><Icon name={ic} className="h-6 w-6" /></span>{t}
               </li>
@@ -27,7 +29,7 @@ export default function Services() {
         </div>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-          {SERVICES.map((s) => {
+           {content.services.map((s) => {
             const body = (
               <>
                 <span>{s.cta}</span><Icon name="arrowUp" className="h-4 w-4" />
@@ -46,7 +48,7 @@ export default function Services() {
                   </ul>
                   {s.id === "repair"
                     ? <button onClick={open} className={cls}>{body}</button>
-                    : <A href={waLink(`Hello SK IT Services! ${s.msg}`)} target="_blank" rel="noopener noreferrer" className={cls}>{body}</A>}
+                     : <A href={waLink(`Hello SK IT Services! ${s.msg}`, business)} target="_blank" rel="noopener noreferrer" className={cls}>{body}</A>}
                 </div>
               </article>
             );

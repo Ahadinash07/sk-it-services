@@ -4,14 +4,16 @@ import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import A from "@/components/A";
 import Icon, { WhatsAppIcon } from "@/components/Icon";
-import { PRIVACY, PRIVACY_UPDATED } from "@/lib/privacy";
-import { BIZ } from "@/lib/data";
-import { waLink, telLink } from "@/lib/whatsapp";
+import { readContent } from "@/lib/cms/store";
+import { waLink, telLinkFor } from "@/lib/whatsapp";
 
-export const metadata = {
-  title: "Privacy Policy | SK IT Services",
-  description: "How SK IT Services collects, uses and protects your personal data.",
-};
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+export async function generateMetadata() {
+  const content = await readContent();
+  return { title: `${content.legal.privacy.title} | ${content.business.name}`, description: content.legal.privacy.description };
+}
 const slug = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
 function Body({ text }) {
@@ -21,17 +23,21 @@ function Body({ text }) {
   return <p>{text}</p>;
 }
 
-export default function PrivacyPage() {
+export default async function PrivacyPage() {
+  const content = await readContent();
+  const privacy = content.legal.privacy;
+  const business = content.business;
+  const tel = telLinkFor(business);
   return (
-    <QuoteProvider>
-      <Header />
+    <QuoteProvider content={content}>
+      <Header content={content} />
       <main>
         <section className="dark-sec bg-ink py-12 text-white sm:py-16">
           <div className="wrap">
-            <p className="eyebrow">Legal</p>
-            <h1 className="h-display mt-4">Privacy <span className="text-lime">Policy.</span></h1>
-            <p className="mt-4 max-w-[620px] text-[15px] leading-relaxed text-white/75 sm:text-lg">How SK IT Services collects, uses and protects your personal data.</p>
-            <p className="mt-3 text-sm text-white/55">Last updated: {PRIVACY_UPDATED}</p>
+             <p className="eyebrow">{privacy.eyebrow}</p>
+             <h1 className="h-display mt-4">{privacy.title} <span className="text-lime">{privacy.titleAccent}</span></h1>
+             <p className="mt-4 max-w-[620px] text-[15px] leading-relaxed text-white/75 sm:text-lg">{privacy.description}</p>
+             <p className="mt-3 text-sm text-white/55">Last updated: {privacy.updated}</p>
           </div>
         </section>
 
@@ -41,22 +47,22 @@ export default function PrivacyPage() {
               <div className="sticky top-28 rounded-2xl bg-mist p-5">
                 <p className="mb-3 text-sm font-extrabold">On this page</p>
                 <ul className="space-y-2 text-sm">
-                  {PRIVACY.map(([t]) => <li key={t}><A local href={`#${slug(t)}`} className="text-ink/75 hover:text-leaf-dark">{t}</A></li>)}
+                   {privacy.sections.map(([t]) => <li key={t}><A local href={`#${slug(t)}`} className="text-ink/75 hover:text-leaf-dark">{t}</A></li>)}
                 </ul>
               </div>
             </nav>
 
             <div className="max-w-[760px] space-y-9 text-[15px] leading-relaxed text-ink/80">
-              {PRIVACY.map(([t, paras]) => (
+               {privacy.sections.map(([t, paras]) => (
                 <article key={t} id={slug(t)}>
                   <h2 className="mb-3 text-xl font-extrabold text-ink sm:text-2xl">{t}</h2>
                   <div className="space-y-3">{paras.map((p) => <Body key={p} text={p} />)}</div>
                   {t === "Contact us" && (
                     <ul className="mt-4 space-y-2.5 text-sm">
-                      <li className="flex items-start gap-3"><Icon name="pin" className="mt-0.5 h-5 w-5 shrink-0 text-leaf" /><span>{BIZ.addressOneLine}</span></li>
-                      <li><A href={telLink} className="flex items-center gap-3 font-semibold hover:text-leaf-dark"><Icon name="phone" className="h-5 w-5 text-leaf" />{BIZ.phoneDisplay}</A></li>
-                      <li><A href={waLink("Hello SK IT Services! I have a question about your Privacy Policy.")} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 font-semibold hover:text-leaf-dark"><WhatsAppIcon className="h-5 w-5 text-leaf" />WhatsApp us</A></li>
-                      <li><A href={`mailto:${BIZ.email}`} className="flex items-center gap-3 font-semibold hover:text-leaf-dark"><Icon name="mail" className="h-5 w-5 text-leaf" />{BIZ.email}</A></li>
+                       <li className="flex items-start gap-3"><Icon name="pin" className="mt-0.5 h-5 w-5 shrink-0 text-leaf" /><span>{business.addressOneLine}</span></li>
+                       <li><A href={tel} className="flex items-center gap-3 font-semibold hover:text-leaf-dark"><Icon name="phone" className="h-5 w-5 text-leaf" />{business.phoneDisplay}</A></li>
+                       <li><A href={waLink("Hello SK IT Services! I have a question about your Privacy Policy.", business)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 font-semibold hover:text-leaf-dark"><WhatsAppIcon className="h-5 w-5 text-leaf" />WhatsApp us</A></li>
+                       <li><A href={`mailto:${business.email}`} className="flex items-center gap-3 font-semibold hover:text-leaf-dark"><Icon name="mail" className="h-5 w-5 text-leaf" />{business.email}</A></li>
                     </ul>
                   )}
                 </article>
@@ -66,8 +72,8 @@ export default function PrivacyPage() {
           </div>
         </section>
       </main>
-      <Footer />
-      <FloatingWhatsApp />
+      <Footer content={content} />
+      <FloatingWhatsApp content={content} />
     </QuoteProvider>
   );
 }

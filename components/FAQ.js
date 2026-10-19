@@ -2,29 +2,30 @@
 import { useState } from "react";
 import Icon from "./Icon";
 import Photo from "./Photo";
-import { FAQ_GROUPS } from "@/lib/data";
 
-export default function FAQ() {
+export default function FAQ({ content }) {
+  const section = content.landing.faq;
+  const groups = content.faq;
   const [g, setG] = useState(0);
   const [open, setOpen] = useState(0);
-  const group = FAQ_GROUPS[g];
+  const group = groups[g] || { qa: [] };
   return (
     <section id="faq" className="bg-mist py-14 sm:py-20">
       <div className="wrap">
         <div className="grid items-center gap-6 lg:grid-cols-[1.2fr_1fr]">
           <div>
-            <p className="eyebrow">FAQ</p>
-            <h2 className="h-section mt-4">Frequently Asked<br /><span className="text-leaf">Questions.</span></h2>
-            <p className="mt-4 max-w-[560px] text-[15px] leading-relaxed text-ink/75 sm:text-base">Find quick answers to common questions about our products, repair services and IT solutions. If you still need help, feel free to contact our team.</p>
+             <p className="eyebrow">{section.eyebrow}</p>
+             <h2 className="h-section mt-4">{section.title}<br /><span className="text-leaf">{section.titleAccent}</span></h2>
+             <p className="mt-4 max-w-[560px] text-[15px] leading-relaxed text-ink/75 sm:text-base">{section.description}</p>
           </div>
           <div className="relative overflow-hidden rounded-2xl">
-            <Photo src="/images/faq-hero.jpg" alt="SK IT Services technician at the counter" sizes="(min-width:1024px) 45vw, 100vw" className="h-[240px] w-full sm:h-[320px] lg:h-[230px]" />
-            <p className="absolute right-4 top-4 -rotate-6 text-right font-hand text-2xl leading-[1.05] text-white drop-shadow-[0_2px_4px_rgba(0,0,0,.8)] sm:text-3xl">Your Questions.<br />Our Support.</p>
+             <Photo src={section.image} alt={section.imageAlt} sizes="(min-width:1024px) 45vw, 100vw" className="h-[240px] w-full sm:h-[320px] lg:h-[230px]" />
+             <p className="absolute right-4 top-4 -rotate-6 whitespace-pre-line text-right font-hand text-2xl leading-[1.05] text-white drop-shadow-[0_2px_4px_rgba(0,0,0,.8)] sm:text-3xl">{section.note}</p>
           </div>
         </div>
         <div className="mt-9 grid gap-4 lg:grid-cols-[320px_1fr]">
           <div role="tablist" aria-label="FAQ categories" className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
-            {FAQ_GROUPS.map((f, i) => (
+             {groups.map((f, i) => (
               <button key={f.id} role="tab" aria-selected={g === i} onClick={() => { setG(i); setOpen(0); }} className={`flex items-center gap-3 rounded-2xl p-3.5 text-left transition ${g === i ? "bg-lime" : "bg-white shadow-card hover:bg-white/70"}`}>
                 <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-full ${g === i ? "bg-ink text-lime" : "bg-mint text-leaf-dark"}`}><Icon name={f.icon} className="h-5 w-5" /></span>
                 <span className="flex-1"><span className="block text-sm font-extrabold">{f.label}</span><span className="block text-xs text-ink/65">{f.sub}</span></span>

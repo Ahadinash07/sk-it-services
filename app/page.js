@@ -11,16 +11,21 @@ import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import { readContent } from "@/lib/cms/store";
 
-export default function Page() {
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+export default async function Page() {
+  const content = await readContent();
   return (
-    <QuoteProvider>
-      <Header />
+    <QuoteProvider content={content}>
+      <Header content={content} />
       <main className="overflow-x-hidden">
-        <Hero /><Services /><Products /><CustomPC /><Why /><HowWeWork /><Reviews /><FAQ /><Contact />
+        <Hero content={content} /><Services content={content} /><Products content={content} /><CustomPC content={content} /><Why content={content} /><HowWeWork content={content} /><Reviews content={content} /><FAQ content={content} /><Contact content={content} />
       </main>
-      <Footer />
-      <FloatingWhatsApp />
+      <Footer content={content} />
+      <FloatingWhatsApp content={content} />
     </QuoteProvider>
   );
 }

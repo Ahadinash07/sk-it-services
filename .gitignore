@@ -15,6 +15,11 @@
 # production
 /build
 
+# # CMS runtime data and uploaded files
+# /storage/content.json
+# /public/uploads/*
+# !/public/uploads/.gitkeep
+
 # misc
 .DS_Store
 *.pem

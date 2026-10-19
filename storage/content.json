@@ -1,0 +1,1048 @@
+{
+  "schemaVersion": 1,
+  "business": {
+    "name": "SK IT Services",
+    "tagline": "Connected by Technology, Powered by Trust.",
+    "phoneRaw": "+601157579656",
+    "phoneWa": "601157579656",
+    "phoneDisplay": "+60 11-5757 9656",
+    "email": "skitsvc@gmail.com",
+    "contactPerson": "Syed Abdul Kather",
+    "addressLines": [
+      "SK IT Services – Plaza Imbi",
+      "Lot 1.36, 1st Floor, Plaza Imbi,",
+      "Jalan Imbi, 55100 Kuala Lumpur,",
+      "Malaysia."
+    ],
+    "addressOneLine": "Lot 1.36, First Floor, Imbi Plaza, Jalan Imbi, 55100 Kuala Lumpur, Malaysia",
+    "hours": [
+      "Monday – Saturday",
+      "10:00 AM – 7:00 PM",
+      "(Closed on Sunday)"
+    ],
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Imbi+Plaza+Jalan+Imbi+Kuala+Lumpur",
+    "legalName": "SK IT Services",
+    "country": "Malaysia",
+    "timezone": "Asia/Kuala_Lumpur",
+    "currency": "MYR",
+    "social": {
+      "facebookUrl": "",
+      "instagramUrl": "",
+      "tiktokUrl": ""
+    }
+  },
+  "navigation": [
+    {
+      "label": "Home",
+      "href": "#home"
+    },
+    {
+      "label": "Products",
+      "href": "#products"
+    },
+    {
+      "label": "Repair Services",
+      "href": "#services"
+    },
+    {
+      "label": "Business IT",
+      "href": "#business-it"
+    },
+    {
+      "label": "About Us",
+      "href": "#why"
+    },
+    {
+      "label": "Contact",
+      "href": "#contact"
+    }
+  ],
+  "landing": {
+    "header": {
+      "logo": "/logo.png",
+      "logoAlt": "SK IT Services",
+      "callLabel": "Call Now",
+      "quoteLabel": "Get a Free Quote",
+      "mobileCallLabel": "Call us",
+      "mobileWhatsAppLabel": "Chat on WhatsApp",
+      "mobileMenuLabel": "Open menu",
+      "mobileCloseLabel": "Close menu",
+      "mobileFaqLabel": "FAQ",
+      "mobileFaqHref": "#faq"
+    },
+    "heroFeatures": [
+      {
+        "icon": "monitor",
+        "title": "Quality Computers",
+        "sub": "New & Refurbished"
+      },
+      {
+        "icon": "wrench",
+        "title": "Expert Repairs",
+        "sub": "Laptop & Desktop"
+      },
+      {
+        "icon": "users",
+        "title": "Business IT Solutions",
+        "sub": "For Individuals & Businesses"
+      }
+    ],
+    "hero": {
+      "eyebrow": "SK IT Services · Kuala Lumpur",
+      "title": "Your Trusted Partner in",
+      "titleAccent": "IT Solutions.",
+      "description": "Quality computers, professional repairs and practical IT solutions for individuals and businesses — all under one roof.",
+      "image": "/images/hero.jpg",
+      "imageAlt": "Technician repairing a laptop at SK IT Services",
+      "primaryCta": "Explore Our Services",
+      "primaryHref": "#services",
+      "secondaryCta": "Get a Free Quote",
+      "tagline": "Connected by Technology, Powered by Trust."
+    },
+    "services": {
+      "eyebrow": "Our Core Services",
+      "title": "One Partner.",
+      "titleAccent": "Complete IT Solutions.",
+      "description": "From computers and accessories to professional repairs and business IT assistance, SK IT Services provides practical technology solutions tailored to your needs.",
+      "trust": [
+        [
+          "shield",
+          "Reliable Service"
+        ],
+        [
+          "users",
+          "Professional Advice"
+        ],
+        [
+          "headset",
+          "Friendly Support"
+        ]
+      ]
+    },
+    "products": {
+      "eyebrow": "Shop Our Products",
+      "title": "Computers & Technology",
+      "titleAccent": "for Every Need.",
+      "description": "Explore our range of new and refurbished computers, components and accessories, with trusted brands and expert advice to help you find the right solution.",
+      "sourcingTitle": "Looking for Something Specific?",
+      "sourcingText": "Can't find what you're looking for? Contact our team and we'll help you source the right product.",
+      "trust": [
+        [
+          "diamond",
+          "Quality Products"
+        ],
+        [
+          "tag",
+          "Trusted Brands"
+        ],
+        [
+          "headset",
+          "Expert Guidance"
+        ]
+      ]
+    },
+    "customPc": {
+      "eyebrow": "Custom PC Builder",
+      "title": "Your PC,",
+      "titleAccent": "Your Way.",
+      "description": "Build a computer that fits your needs. Whether it's for gaming, study, work or content creation, we'll help you choose the right parts and build a reliable system within your budget.",
+      "primaryCta": "Start Building Your PC",
+      "secondaryCta": "Get a Consultation",
+      "buildMessage": "Hello SK IT Services! I'd like to build a custom PC. My usage: ____ and budget: ____",
+      "consultationMessage": "Hello SK IT Services! I'd like a consultation for a custom PC build.",
+      "image": "/images/Builder-HeroBanner.png",
+      "imageAlt": "Custom PC build workstation",
+      "processEyebrow": "How It Works",
+      "processTitle": "A Simple Process.",
+      "closingText": "From entry-level builds to high-performance setups, we'll help you get the right PC for your needs."
+    },
+    "why": {
+      "eyebrow": "Why Choose SK IT",
+      "title": "More Than a Computer Shop.",
+      "titleAccent": "A Partner You Can Trust.",
+      "description": "At SK IT Services, we combine quality products, professional expertise and genuine customer support to deliver the right IT solutions for individuals and businesses.",
+      "image": "/images/why-hero.jpg",
+      "imageAlt": "Inside the SK IT Services store"
+    },
+    "process": {
+      "eyebrow": "How We Work",
+      "title": "A Simple Process.",
+      "titleAccent": "From Inquiry to Solution.",
+      "description": "We make it easy for you to get the right IT solution. Whether it's a new computer, a repair or a business IT request, our process is simple, transparent and hassle-free.",
+      "image": "/images/how-hero.jpg",
+      "imageAlt": "SK IT technician at work",
+      "note": "Simple.\nTransparent.\nHassle-free."
+    },
+    "reviews": {
+      "eyebrow": "Customer Reviews",
+      "title": "Real Customers.",
+      "titleAccent": "Real Experiences.",
+      "description": "Here are some of the feedback from our customers who have trusted SK IT Services for their computers, repairs and IT solutions.",
+      "note": "Thank you\nfor your trust\nand support!",
+      "joinTitle": "Join Our Happy Customers",
+      "joinText": "Be part of the SK IT family and experience our reliable service, quality products and friendly support.",
+      "image": "/images/why-hero.jpg"
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Frequently Asked",
+      "titleAccent": "Questions.",
+      "description": "Find quick answers to common questions about our products, repair services and IT solutions. If you still need help, feel free to contact our team.",
+      "note": "Your Questions.\nOur Support.",
+      "image": "/images/faq-hero.jpg",
+      "imageAlt": "SK IT Services technician at the counter"
+    },
+    "contact": {
+      "eyebrow": "Contact Us",
+      "title": "Let's Talk About",
+      "titleAccent": "Your IT Needs.",
+      "description": "Whether you need a new computer, a repair, or a business IT solution, our team is here to help. Get in touch with us through your preferred channel or visit our store at Plaza Imbi, Kuala Lumpur.",
+      "note": "Same Team.\nReal Support.",
+      "quoteTitle": "Get a Free Quote",
+      "quoteDescription": "Select your device and issue to get a quick quote.",
+      "storeTitle": "Our Store",
+      "storeDescription": "Visit us for product enquiries, repairs or a consultation.",
+      "stillQuestionsEyebrow": "Still have questions?",
+      "stillQuestionsTitle": "We're Here to Help.",
+      "stillQuestionsText": "Not sure what you need? Our friendly team is ready to advise you on the right solution based on your usage, budget and requirements.",
+      "image": "/images/contact-hero.jpg",
+      "imageAlt": "SK IT Services front desk",
+      "storeImage": "/images/store.jpg",
+      "storeImageAlt": "SK IT Services store at Plaza Imbi",
+      "quoteEyebrow": "Get a Free Quote",
+      "quoteHint": "Select your device and issue to get a quick quote.",
+      "storeEyebrow": "Our Store",
+      "storeHint": "Visit us for product enquiries, repairs or a consultation.",
+      "cards": [
+        {
+          "icon": "whatsapp",
+          "title": "WhatsApp",
+          "main": "",
+          "sub": "Fastest response",
+          "action": "whatsapp"
+        },
+        {
+          "icon": "phone",
+          "title": "Phone Call",
+          "main": "",
+          "sub": "Mon – Sat, 10AM – 7PM",
+          "action": "phone"
+        },
+        {
+          "icon": "mail",
+          "title": "Email",
+          "main": "",
+          "sub": "We'll get back to you soon",
+          "action": "email"
+        },
+        {
+          "icon": "pin",
+          "title": "Visit Our Store",
+          "main": "Plaza Imbi, Kuala Lumpur",
+          "sub": "See location details below",
+          "action": "maps"
+        }
+      ],
+      "directionsLabel": "Get Directions →",
+      "addressLabel": "Address",
+      "hoursLabel": "Operating Hours",
+      "stillQuestionsItems": [
+        [
+          "chat",
+          "Product Enquiry"
+        ],
+        [
+          "wrench",
+          "Repair Support"
+        ],
+        [
+          "briefcase",
+          "Business IT Consultation"
+        ],
+        [
+          "users",
+          "General Questions"
+        ]
+      ]
+    },
+    "floating": {
+      "callLabel": "Call SK IT Services",
+      "whatsappLabel": "Chat with SK IT Services on WhatsApp"
+    }
+  },
+  "services": [
+    {
+      "id": "repair",
+      "img": "/images/why-2.jpg",
+      "kicker": "Repair & Restore",
+      "title": "Laptop & Computer Repair",
+      "text": "Screen, battery, keyboard, charging or performance issues? We help identify the fault and discuss the next step.",
+      "items": [
+        "Screen, keyboard & battery repairs",
+        "Charging port & hardware issues",
+        "Virus removal, cleaning & maintenance"
+      ],
+      "cta": "Discuss a repair",
+      "msg": "I'd like to discuss a laptop / computer repair."
+    },
+    {
+      "id": "refurbished",
+      "img": "/images/why-5.jpg",
+      "kicker": "Smarter Spending",
+      "title": "Refurbished & New Computers",
+      "text": "Find a computer that suits your budget, whether it is for classes, everyday work or your business.",
+      "items": [
+        "Tested refurbished laptops",
+        "New desktops & all-in-one PCs",
+        "Help choosing the right device"
+      ],
+      "cta": "Find your computer",
+      "msg": "I'm looking for a refurbished or new computer."
+    },
+    {
+      "id": "parts",
+      "img": "/images/prod-1.jpg",
+      "kicker": "Parts & Performance",
+      "title": "Computer Parts, RAM & SSD",
+      "text": "Give an older computer a new lease on life with the right upgrades and accessories.",
+      "items": [
+        "RAM and SSD upgrades",
+        "Chargers, batteries & keyboards",
+        "Mice, bags, cables & accessories"
+      ],
+      "cta": "Plan an upgrade",
+      "msg": "I'd like to plan a RAM / SSD upgrade."
+    },
+    {
+      "id": "software",
+      "img": "/images/prod-3.jpg",
+      "kicker": "Ready to Use",
+      "title": "Software Installation & Setup",
+      "text": "Get your system set up properly with operating systems, essential software, drivers and security settings.",
+      "items": [
+        "Windows & OS installation",
+        "Office and business software",
+        "Drivers, updates & backup setup"
+      ],
+      "cta": "Set up my device",
+      "msg": "I need software installation / setup for my device."
+    },
+    {
+      "id": "network",
+      "img": "/images/why-4.jpg",
+      "kicker": "Stay Connected",
+      "title": "Networking & Wi-Fi Setup",
+      "text": "Build a more reliable connection at home, in your shop or across your office.",
+      "items": [
+        "Wi-Fi coverage & router setup",
+        "LAN cabling, switches & access points",
+        "Slow network troubleshooting"
+      ],
+      "cta": "Improve my network",
+      "msg": "I'd like help with networking / Wi-Fi setup."
+    },
+    {
+      "id": "custom-build",
+      "img": "/images/prod-4.jpg",
+      "kicker": "Built Around You",
+      "title": "Custom PC Builder",
+      "text": "A PC built around what you do and what you want to spend — not a one-size-fits-all setup.",
+      "items": [
+        "Gaming & streaming builds",
+        "Video editing workstations",
+        "Office and home PCs"
+      ],
+      "cta": "Plan my build",
+      "msg": "I'd like to plan a custom PC build."
+    },
+    {
+      "id": "business-it",
+      "img": "/images/why-3.jpg",
+      "kicker": "Business Technology",
+      "title": "IT Consulting & Business Support",
+      "text": "Practical technology advice for small businesses, growing teams and new office setups.",
+      "items": [
+        "IT needs assessment & planning",
+        "Hardware recommendations & budgets",
+        "Ongoing support & helpdesk"
+      ],
+      "cta": "Talk to an expert",
+      "msg": "I'd like to talk to an expert about IT support for my business."
+    },
+    {
+      "id": "online",
+      "img": "/images/prod-2.jpg",
+      "kicker": "Shop with Confidence",
+      "title": "Online Sales & Accessories",
+      "text": "Ask us about laptops, computers, parts and accessories, with guidance to help you choose.",
+      "items": [
+        "Laptops and desktops",
+        "Computer parts & accessories",
+        "Product guidance before purchase"
+      ],
+      "cta": "Ask about products",
+      "msg": "I'd like to ask about your products and accessories."
+    }
+  ],
+  "trustStrip": [
+    [
+      "shield",
+      "Reliable Service"
+    ],
+    [
+      "users",
+      "Professional Advice"
+    ],
+    [
+      "headset",
+      "Friendly Support"
+    ]
+  ],
+  "productTrust": [
+    [
+      "diamond",
+      "Quality Products"
+    ],
+    [
+      "tag",
+      "Trusted Brands"
+    ],
+    [
+      "headset",
+      "Expert Guidance"
+    ]
+  ],
+  "products": [
+    {
+      "id": "laptops",
+      "img": "/images/prod-3.jpg",
+      "icon": "laptop",
+      "title": "Laptops",
+      "text": "New and refurbished laptops for work, study and everyday use. A wide selection from trusted brands.",
+      "short": "New and refurbished laptops for work, study and everyday use.",
+      "items": [
+        "Business laptops",
+        "Student laptops",
+        "Refurbished laptops",
+        "Gaming & high performance"
+      ],
+      "cta": "Shop Laptops",
+      "item": "Laptops"
+    },
+    {
+      "id": "desktops",
+      "img": "/images/prod-4.jpg",
+      "icon": "monitor",
+      "title": "Desktops",
+      "text": "Reliable desktop computers and workstations for home and office use.",
+      "short": "Reliable desktop computers and workstations for home and office use.",
+      "items": [
+        "Office desktops",
+        "Workstations",
+        "All-in-one PCs",
+        "Refurbished desktops"
+      ],
+      "cta": "Shop Desktops",
+      "item": "Desktops"
+    },
+    {
+      "id": "parts",
+      "img": "/images/prod-1.jpg",
+      "icon": "box",
+      "title": "Computer Parts",
+      "text": "Essential components to upgrade, repair or build your computer.",
+      "short": "Essential components to upgrade, repair or build your computer.",
+      "items": [
+        "RAM & SSD",
+        "Motherboards",
+        "Graphics cards",
+        "Power supply & cooling"
+      ],
+      "cta": "Shop Parts",
+      "item": "Computer Parts"
+    },
+    {
+      "id": "accessories",
+      "img": "/images/prod-2.jpg",
+      "icon": "mouse",
+      "title": "Accessories",
+      "text": "Everyday essentials to complete your setup.",
+      "short": "Everyday essentials to complete your setup.",
+      "items": [
+        "Chargers & adapters",
+        "Keyboards & mice",
+        "Monitors & webcams",
+        "Laptop bags & more"
+      ],
+      "cta": "Shop Accessories",
+      "item": "Accessories"
+    }
+  ],
+  "customPc": {
+    "types": [
+      [
+        "gamepad",
+        "Gaming Setups"
+      ],
+      [
+        "briefcase",
+        "Work & Study Setups"
+      ],
+      [
+        "video",
+        "Content Creation Setups"
+      ],
+      [
+        "gear",
+        "Custom Builds on Request"
+      ]
+    ],
+    "steps": [
+      [
+        "chat",
+        "Tell Us Your Needs",
+        "Share your usage, budget and preferences."
+      ],
+      [
+        "cpu",
+        "Get Parts Recommendations",
+        "We'll suggest the best components for your needs."
+      ],
+      [
+        "wrench",
+        "Professional Assembly",
+        "Our team will build and test your PC for reliability."
+      ],
+      [
+        "monitor",
+        "Ready to Use",
+        "Get your custom PC, ready for work, study or play."
+      ]
+    ],
+    "points": [
+      "Quality parts from trusted brands",
+      "Professional assembly and testing",
+      "Advice based on your needs and budget"
+    ],
+    "brands": [
+      "intel",
+      "AMD",
+      "ASUS",
+      "MSI",
+      "GIGABYTE",
+      "Kingston"
+    ]
+  },
+  "why": [
+    {
+      "icon": "shield",
+      "img": "/images/why-3.jpg",
+      "title": "Reliable Service",
+      "text": "Honest advice and practical solutions based on your needs and budget."
+    },
+    {
+      "icon": "users",
+      "img": "/images/why-4.jpg",
+      "title": "Experienced Team",
+      "text": "Skilled technicians with hands-on experience in computers, repairs and IT solutions."
+    },
+    {
+      "icon": "tag",
+      "img": "/images/why-5.jpg",
+      "title": "Quality Products",
+      "text": "New and refurbished computers, parts and accessories from trusted brands."
+    },
+    {
+      "icon": "headset",
+      "img": "/images/why-6.jpg",
+      "title": "Friendly Support",
+      "text": "We take the time to understand your needs and provide clear guidance."
+    },
+    {
+      "icon": "gear",
+      "img": "/images/why-2.jpg",
+      "title": "Complete Solutions",
+      "text": "From sales and repairs to business IT assistance, all under one roof."
+    },
+    {
+      "icon": "handshake",
+      "img": "/images/why-1.jpg",
+      "title": "Customer Satisfaction",
+      "text": "Our customers' trust and positive feedback keep us moving forward."
+    }
+  ],
+  "process": [
+    {
+      "icon": "chat",
+      "img": "/images/why-6.jpg",
+      "title": "Get in Touch",
+      "text": "Contact us via WhatsApp, phone or visit our store. Tell us your needs or issues."
+    },
+    {
+      "icon": "search",
+      "img": "/images/why-2.jpg",
+      "title": "Assessment & Diagnosis",
+      "text": "We inspect and diagnose your device or review your requirements to find the best solution."
+    },
+    {
+      "icon": "file",
+      "img": "/images/contact-hero.jpg",
+      "title": "Receive a Free Quote",
+      "text": "We provide a clear quotation based on the diagnosis and your needs before proceeding."
+    },
+    {
+      "icon": "shield",
+      "img": "/images/why-1.jpg",
+      "title": "Approval & Completion",
+      "text": "Once you approve, we proceed with the agreed service, repair, setup or supply. Your device or solution will be ready for you to use."
+    }
+  ],
+  "stats": [
+    {
+      "icon": "star",
+      "big": "4.9",
+      "small": "/5",
+      "label": "Average Rating (Google Reviews)"
+    },
+    {
+      "icon": "users",
+      "big": "500+",
+      "label": "Happy Customers"
+    },
+    {
+      "icon": "chat",
+      "big": "1,000+",
+      "label": "Devices Serviced"
+    },
+    {
+      "icon": "thumb",
+      "big": "98%",
+      "label": "Would Recommend SK IT Services"
+    }
+  ],
+  "reviews": [
+    {
+      "name": "Ahmad Faris",
+      "when": "2 weeks ago",
+      "text": "Great service and very friendly staff. Helped me choose the right laptop for my studies and the price is reasonable. Highly recommended!"
+    },
+    {
+      "name": "Siti Nurhaliza",
+      "when": "1 month ago",
+      "text": "Very satisfied with the service. My desktop was fixed quickly and everything is working perfectly now. Staff are knowledgeable and explain clearly."
+    },
+    {
+      "name": "Marcus Tan",
+      "when": "3 weeks ago",
+      "text": "Bought a custom PC build from SK IT Services. The performance is excellent and the team gave good advice based on my budget. Will come again!"
+    },
+    {
+      "name": "Kumar Raj",
+      "when": "3 weeks ago",
+      "text": "Keyboard rosak and they managed to fix it on the same day. Fast service, reasonable price and very professional. Really appreciate their help."
+    },
+    {
+      "name": "Nur Aisyah",
+      "when": "2 weeks ago",
+      "text": "Good experience overall. Staff are patient and helped me set up my new laptop. After sales service is also very responsive. Highly recommended!"
+    }
+  ],
+  "faq": [
+    {
+      "id": "general",
+      "icon": "help",
+      "label": "General",
+      "sub": "About SK IT Services",
+      "qa": [
+        [
+          "What is SK IT Services?",
+          "SK IT Services is a Kuala Lumpur based computer shop offering new and refurbished computers, parts, accessories, repairs, custom PC builds and IT support for individuals and businesses, all under one roof."
+        ],
+        [
+          "Where are you located?",
+          "We are at Lot 1.36, First Floor, Imbi Plaza, Jalan Imbi, 55100 Kuala Lumpur, Malaysia."
+        ],
+        [
+          "What are your operating hours?",
+          "Monday to Saturday, 10:00 AM – 7:00 PM. We are closed on Sunday."
+        ],
+        [
+          "Can I walk in without an appointment?",
+          "Yes. You are welcome to visit our store during operating hours. For faster service on repairs, you can WhatsApp us first with your device model and issue."
+        ]
+      ]
+    },
+    {
+      "id": "repair",
+      "icon": "wrench",
+      "label": "Repair Services",
+      "sub": "Diagnosis, repair & warranty",
+      "qa": [
+        [
+          "Do you provide laptop and computer repair services?",
+          "Yes. We repair laptops and desktops, including screen and keyboard replacement, battery and charging issues, RAM and SSD upgrades, software problems and component-level motherboard repair."
+        ],
+        [
+          "How long does a typical repair take?",
+          "It depends on the fault and on parts availability. We confirm the timing when you drop off your device."
+        ],
+        [
+          "Do you give a quote before starting work?",
+          "Yes. We provide a written quote, and no work begins until you approve it."
+        ],
+        [
+          "Can you repair a laptop I bought elsewhere?",
+          "Contact us with the model and the problem and we will tell you whether we can help."
+        ]
+      ]
+    },
+    {
+      "id": "products",
+      "icon": "monitor",
+      "label": "Products",
+      "sub": "Laptops, desktops & parts",
+      "qa": [
+        [
+          "Do you sell new and used laptops and computer parts?",
+          "Yes. We sell new and refurbished laptops, desktops, computer parts and accessories. Every refurbished system is tested before sale."
+        ],
+        [
+          "How do I book a custom PC build?",
+          "Fill in the contact form, WhatsApp or call us. We will arrange a short consultation about your usage and budget."
+        ],
+        [
+          "Do you offer delivery or pick-up?",
+          "Ask our team about delivery and pick-up options for the product you choose."
+        ]
+      ]
+    },
+    {
+      "id": "business",
+      "icon": "users",
+      "label": "Business IT",
+      "sub": "Solutions for businesses",
+      "qa": [
+        [
+          "Do you provide IT support for businesses?",
+          "Yes. We help with business computer supply, office workstation setup, network and Wi-Fi installation and on-demand technical assistance, subject to assessment."
+        ],
+        [
+          "Do you do home or office visits?",
+          "Contact us with your location and we will confirm whether we can visit."
+        ]
+      ]
+    },
+    {
+      "id": "payment",
+      "icon": "shield",
+      "label": "Payment & Warranty",
+      "sub": "Payment methods & warranty",
+      "qa": [
+        [
+          "Do you offer warranty for repairs?",
+          "Ask our team about the warranty on the exact repair or product you choose. We confirm warranty terms in your written quote."
+        ],
+        [
+          "What payment methods do you accept?",
+          "Please contact our team to confirm the accepted payment methods before your visit."
+        ]
+      ]
+    },
+    {
+      "id": "others",
+      "icon": "chat",
+      "label": "Others",
+      "sub": "Miscellaneous questions",
+      "qa": [
+        [
+          "I have another question. Who do I contact?",
+          "WhatsApp or call us on +60 11-5757 9656, or email skitsvc@gmail.com. We will get back to you as soon as possible."
+        ]
+      ]
+    }
+  ],
+  "inquiryTypes": [
+    "Product Enquiry",
+    "Repair Support",
+    "Business IT Consultation",
+    "General Questions"
+  ],
+  "quote": {
+    "devices": [
+      [
+        "laptop",
+        "Laptop"
+      ],
+      [
+        "laptop",
+        "MacBook"
+      ],
+      [
+        "tablet",
+        "Surface Pro"
+      ],
+      [
+        "monitor",
+        "Computer"
+      ],
+      [
+        "plus",
+        "Other"
+      ]
+    ],
+    "models": {
+      "Laptop": [
+        "Dell",
+        "HP",
+        "Lenovo",
+        "Acer",
+        "ASUS",
+        "MSI",
+        "Other"
+      ],
+      "MacBook": [
+        "MacBook Air",
+        "MacBook Pro",
+        "MacBook (older)",
+        "Other"
+      ],
+      "Surface Pro": [
+        "Surface Pro 7",
+        "Surface Pro 8",
+        "Surface Pro 9",
+        "Surface Pro 10",
+        "Other"
+      ],
+      "Computer": [
+        "Desktop PC",
+        "All-in-One",
+        "Gaming PC",
+        "Custom Build",
+        "Other"
+      ],
+      "Other": [
+        "Tablet",
+        "Printer",
+        "Network device",
+        "Other"
+      ]
+    },
+    "issues": [
+      [
+        "monitor",
+        "Screen damage"
+      ],
+      [
+        "power",
+        "Won't power on"
+      ],
+      [
+        "gauge",
+        "Slow performance"
+      ],
+      [
+        "battery",
+        "Battery / charging"
+      ],
+      [
+        "keyboard",
+        "Keyboard / trackpad"
+      ],
+      [
+        "gear",
+        "Software / virus"
+      ],
+      [
+        "plus",
+        "Other issue"
+      ]
+    ],
+    "steps": [
+      "Device",
+      "Model",
+      "Issue"
+    ],
+    "titles": [
+      "What device do you have?",
+      "Choose your device model.",
+      "What is the issue?"
+    ],
+    "subtitles": [
+      "Select your device type to get started.",
+      "Choose the brand or model for your device.",
+      "What issue are you experiencing?"
+    ],
+    "submitLabel": "Send for pricing",
+    "backLabel": "Back",
+    "continueLabel": "Continue",
+    "privacyNotice": "Your device details will be sent to SK IT Services on WhatsApp.",
+    "successMessage": "WhatsApp opened with your message. Just press send to reach us.",
+    "messageTemplate": "Hello SK IT Services! I'd like a quote.\n\nDevice: {{device}}\nBrand / Model: {{model}}\nIssue: {{issue}}\n\nPlease let me know the pricing. Thank you!"
+  },
+  "seo": {
+    "title": "SK IT Services | Laptop Repair, Refurbished Laptops & IT Support in Kuala Lumpur",
+    "description": "Buy refurbished laptops, get laptop repair and computer repair, or book office network setup and IT support in Kuala Lumpur with SK IT Services. Call +60 11-5757 9656 for a free quote.",
+    "keywords": "laptop repair Kuala Lumpur, computer repair Kuala Lumpur, refurbished laptops Kuala Lumpur, custom PC builder Kuala Lumpur, IT support for small business Kuala Lumpur",
+    "canonicalUrl": "https://www.skitservices.com.my",
+    "openGraphTitle": "SK IT Services | Your Trusted Partner in IT Solutions",
+    "openGraphDescription": "Quality computers, professional repairs and practical IT solutions in Kuala Lumpur.",
+    "openGraphImage": "/og-image.jpg",
+    "locale": "en_MY",
+    "robots": "index,follow"
+  },
+  "tracking": {
+    "googleAnalyticsId": "",
+    "googleTagManagerId": "",
+    "metaPixelId": "",
+    "consentMode": "disabled",
+    "customHead": "",
+    "customBodyStart": "",
+    "customBodyEnd": ""
+  },
+  "footer": {
+    "groups": [
+      {
+        "title": "Quick Links",
+        "links": [
+          [
+            "Home",
+            "#home"
+          ],
+          [
+            "Products",
+            "#products"
+          ],
+          [
+            "Repair Services",
+            "#services"
+          ],
+          [
+            "Business IT",
+            "#business-it"
+          ]
+        ]
+      },
+      {
+        "title": "Company",
+        "links": [
+          [
+            "About Us",
+            "#why"
+          ],
+          [
+            "Contact Us",
+            "#contact"
+          ],
+          [
+            "FAQ",
+            "#faq"
+          ]
+        ]
+      }
+    ],
+    "whatsappLabel": "WhatsApp us",
+    "contactHeading": "Contact Details",
+    "privacyLabel": "Privacy Policy",
+    "privacyHref": "/privacy-policy",
+    "copyright": "© 2026 SK IT Services. All rights reserved."
+  },
+  "legal": {
+    "privacy": {
+      "eyebrow": "Legal",
+      "title": "Privacy",
+      "titleAccent": "Policy.",
+      "description": "How SK IT Services collects, uses and protects your personal data.",
+      "updated": "17 October 2026",
+      "sections": [
+        [
+          "Overview",
+          [
+            "SK IT Services (\"we\", \"us\", \"our\") operates this website and the computer shop at Lot 1.36, First Floor, Imbi Plaza, Jalan Imbi, 55100 Kuala Lumpur, Malaysia. This Privacy Policy explains what personal data we collect, how we use it and the choices you have, in line with the Personal Data Protection Act 2010 of Malaysia (PDPA).",
+            "By using this website or contacting us, you agree to the practices described here."
+          ]
+        ],
+        [
+          "Information we collect",
+          [
+            "We only collect what we need to answer your enquiry and provide our services:",
+            "- Contact details: your name, phone number and email address.\n- Enquiry details: the device type, brand or model, the issue you describe, the product or service you are asking about and any message you write.\n- Service records: details of repairs, purchases, quotations and warranty for work done in our store.\n- Technical data: basic browser and device information that your browser sends automatically when you visit the website."
+          ]
+        ],
+        [
+          "How we collect it",
+          [
+            "We collect information when you fill in the quote or contact forms on this website, message or call us on WhatsApp or phone, email us, or visit our store.",
+            "The forms on this website do not save your details on our servers. When you submit a form, your message is prepared and opened in WhatsApp so that you can send it to us directly."
+          ]
+        ],
+        [
+          "How we use your information",
+          [
+            "- To reply to enquiries and prepare quotations.\n- To diagnose, repair, set up or supply the product or service you requested.\n- To contact you about your job, warranty or after-sales support.\n- To keep business records and meet legal, tax and accounting requirements.\n- To improve our website and services.",
+            "We do not sell your personal data and we do not use it for third-party advertising."
+          ]
+        ],
+        [
+          "WhatsApp and third-party services",
+          [
+            "Many buttons on this website open WhatsApp, the phone dialler, your email app or Google Maps. When you use them, your information is handled by those services under their own privacy policies, and we are not responsible for how they process data.",
+            "Messages you send on WhatsApp are processed by WhatsApp (Meta) and received on our business number."
+          ]
+        ],
+        [
+          "Cookies",
+          [
+            "This website does not use advertising cookies. Your browser may store essential technical data needed to display the site. If we add analytics or similar tools in future, we will update this policy."
+          ]
+        ],
+        [
+          "Sharing your information",
+          [
+            "We do not share your personal data with others except where it is needed to provide your service (for example, a parts supplier or manufacturer warranty claim), where you ask us to, or where the law or a government authority requires us to."
+          ]
+        ],
+        [
+          "Your device data",
+          [
+            "When you leave a device with us for repair, we ask for your approval before work begins. We only access files or accounts on your device where this is necessary to diagnose or complete the repair, and we do not copy or keep your personal files. We recommend that you back up your data before bringing a device in."
+          ]
+        ],
+        [
+          "Data retention and security",
+          [
+            "We keep personal data only for as long as needed for the purposes above, including warranty and legal record-keeping, and then delete or anonymise it. We take reasonable steps to protect your information from loss, misuse and unauthorised access, but no method of transmission or storage is completely secure."
+          ]
+        ],
+        [
+          "Your rights",
+          [
+            "Under the PDPA you may ask to access the personal data we hold about you, request corrections, or withdraw your consent to our use of it. To make a request, contact us using the details below. We may need to verify your identity before we act on it."
+          ]
+        ],
+        [
+          "Children",
+          [
+            "Our services are not directed at children under 18. If you believe a child has given us personal data without a parent or guardian's consent, please contact us so we can remove it."
+          ]
+        ],
+        [
+          "Changes to this policy",
+          [
+            "We may update this policy from time to time. The latest version will always be on this page, with the updated date shown at the top."
+          ]
+        ],
+        [
+          "Contact us",
+          [
+            "If you have questions about this Privacy Policy or your personal data, please contact SK IT Services."
+          ]
+        ]
+      ]
+    },
+    "terms": {
+      "enabled": false,
+      "title": "Terms & Conditions",
+      "sections": []
+    }
+  }
+}
