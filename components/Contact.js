@@ -5,162 +5,672 @@ import Icon, { WhatsAppIcon } from "./Icon";
 import Photo from "./Photo";
 import { openWhatsApp, waLink, telLinkFor } from "@/lib/whatsapp";
 
-function Tile({ selected, onClick, children, className = "" }) {
+function PcTowerIcon({ className = "h-5 w-5" }) {
   return (
-    <button type="button" onClick={onClick} aria-pressed={selected}
-      className={`flex items-center justify-center gap-3 rounded-2xl border px-4 text-center font-form font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#8cc43f]
-      ${selected ? "border-[#e0912f] bg-[#fdf3e7] text-[#9a5a16] shadow-[0_0_0_5px_rgba(224,145,47,.14)]" : "border-[#e3e5e0] bg-[#f6f6f4] text-[#4a5258] hover:bg-[#efefeb]"} ${className}`}>
-      {children}
-    </button>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect x="5" y="2" width="14" height="20" rx="2.5" />
+      <line x1="9" y1="6" x2="15" y2="6" />
+      <line x1="9" y1="9" x2="15" y2="9" />
+      <circle cx="12" cy="16.5" r="1.5" />
+    </svg>
   );
 }
 
 function MapCard({ business }) {
+  const mapsUrl = business?.mapsUrl || "https://www.google.com/maps/search/?api=1&query=Imbi+Plaza+Jalan+Imbi+Kuala+Lumpur";
   return (
-    <A href={business.mapsUrl} target="_blank" rel="noopener noreferrer" aria-label="Open store location in Google Maps" className="relative block min-h-[150px] overflow-hidden rounded-xl bg-[#e8eee3]">
-      <svg viewBox="0 0 240 160" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <rect width="240" height="160" fill="#e8eee3" /><rect x="150" y="90" width="90" height="70" fill="#cfe3bd" />
-        {[[0, 40, 240, 52], [0, 118, 240, 112], [60, 0, 90, 160], [170, 0, 150, 160]].map(([a, b, c, d], i) => <line key={i} x1={a} y1={b} x2={c} y2={d} stroke="#fff" strokeWidth={i < 2 ? 9 : 6} />)}
-        <path d="M0 150 Q80 120 240 140" stroke="#f6d9a0" strokeWidth="5" fill="none" />
-      </svg>
-      <span className="absolute left-[44%] top-[28%] flex -translate-x-1/2 flex-col items-center">
-        <span className="rounded-lg bg-white px-2.5 py-1 text-[11px] font-bold shadow">Plaza Imbi<br /><span className="font-medium text-ink/60">Kuala Lumpur</span></span>
-        <Icon name="pin" className="mt-1 h-7 w-7 fill-red-500 text-red-600" />
-      </span>
-    </A>
+    <div className="relative h-[145px] sm:h-[155px] w-full overflow-hidden rounded-xl border border-ink/10 bg-mist">
+      <iframe
+        title="Plaza Imbi Location"
+        src="https://maps.google.com/maps?q=Plaza+Imbi,+Jalan+Imbi,+Kuala+Lumpur&t=&z=16&ie=UTF8&iwloc=&output=embed"
+        className="h-full w-full border-0"
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      />
+      <a
+        href={mapsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open store location in Google Maps"
+        className="absolute left-2.5 top-2.5 z-10 rounded-md bg-white/95 px-2.5 py-1.5 shadow-sm backdrop-blur transition hover:bg-white"
+      >
+        <span className="block text-[11px] font-bold leading-tight text-ink">Plaza Imbi</span>
+        <span className="block text-[10px] font-medium text-leaf-dark leading-tight hover:underline">View larger map</span>
+      </a>
+    </div>
   );
 }
 
-export default function Contact({ content }) {
-  const section = content.landing.contact;
-  const business = content.business;
-  const quote = content.quote;
-  const tel = telLinkFor(business);
-  const [sent, setSent] = useState(false);
-  const [step, setStep] = useState(0);
-  const [device, setDevice] = useState("Laptop");
-  const [model, setModel] = useState("");
-  const [issue, setIssue] = useState("");
+const CATEGORIES = [
+  {
+    id: "repair",
+    icon: "wrench",
+    title: "Laptop & Computer Repair",
+    sub: "Diagnose and fix issues",
+    defaultMessage: "Hi SK IT Services, I need help with Laptop & Computer Repair.",
+  },
+  {
+    id: "sales",
+    icon: "cart",
+    title: "Laptop & Computer Sales",
+    sub: "New and refurbished laptops & desktops",
+    defaultMessage: "Hi SK IT Services, I'm interested in Laptop & Computer Sales.",
+  },
+  {
+    id: "parts",
+    icon: "cpu",
+    title: "Parts & Upgrades",
+    sub: "RAM, SSD, storage, accessories and more",
+    defaultMessage: "Hi SK IT Services, I am looking for Parts & Upgrades (RAM, SSD, storage, etc.).",
+  },
+  {
+    id: "business",
+    icon: "building",
+    title: "Business IT Support",
+    sub: "IT solutions for businesses",
+    defaultMessage: "Hi SK IT Services, I would like to enquire about Business IT Support.",
+  },
+  {
+    id: "custom-pc",
+    icon: "pc",
+    title: "Custom PC Builds",
+    sub: "Gaming, work or study setups",
+    defaultMessage: "Hi SK IT Services, I would like to plan a Custom PC Build.",
+  },
+  {
+    id: "other",
+    icon: "chat",
+    title: "Other Enquiries",
+    sub: "General questions or other services",
+    defaultMessage: "Hi SK IT Services, I have a general enquiry.",
+  },
+];
 
-  const submit = () => {
-    openWhatsApp(quote.messageTemplate.replace("{{device}}", device).replace("{{model}}", model).replace("{{issue}}", issue), business);
-    setSent(true);
+const CATEGORY_DETAILS = {
+  repair: {
+    title: "What needs to be repaired?",
+    subtitle: "Select the issue or component that needs attention:",
+    options: [
+      "Screen / Display Damage",
+      "Battery & Charging Issue",
+      "Device Won't Turn On",
+      "Slow Speed / Freezing",
+      "Keyboard / Trackpad",
+      "Water / Liquid Spill",
+      "Motherboard / Hardware",
+      "Virus / OS / Software",
+      "Other Repair Problem",
+    ],
+    placeholder: "Optional: Device model or issue details (e.g. Acer Nitro 5, cracked screen)",
+  },
+  sales: {
+    title: "What are you looking for?",
+    subtitle: "Select your preferred device type or budget category:",
+    options: [
+      "Refurbished Laptop (Tested & Clean)",
+      "Brand New Laptop",
+      "Desktop PC / All-in-One",
+      "Budget / Student Device",
+      "Business / Office Laptop",
+      "High Performance / Gaming Laptop",
+    ],
+    placeholder: "Optional: Preferred brand or target budget (e.g. under RM 1,500)",
+  },
+  parts: {
+    title: "What parts or upgrades do you need?",
+    subtitle: "Select the component or accessory you're looking for:",
+    options: [
+      "RAM Upgrade (8GB / 16GB / 32GB)",
+      "SSD Storage Upgrade (Fast NVMe)",
+      "Laptop Replacement Battery",
+      "Original Charger / Power Adapter",
+      "Replacement Screen / Panel",
+      "Other Components & Accessories",
+    ],
+    placeholder: "Optional: Your computer model (e.g. Lenovo IdeaPad 3)",
+  },
+  business: {
+    title: "How can we assist your business?",
+    subtitle: "Select your required business IT service:",
+    options: [
+      "Office Setup & Workstations",
+      "Wi-Fi & Network Cabling Setup",
+      "On-Demand IT Maintenance",
+      "Bulk Computer & Laptop Supply",
+      "Hardware Upgrades & Servicing",
+      "General IT Consultation",
+    ],
+    placeholder: "Optional: Company name or number of workstations",
+  },
+  "custom-pc": {
+    title: "What type of Custom PC do you want?",
+    subtitle: "Tell us your usage and target setup:",
+    options: [
+      "Gaming PC (1080p / 1440p / 4K)",
+      "Workstation for Video Editing / 3D",
+      "Home Office & Productivity",
+      "Compact / SFF Minimalist Build",
+      "Budget-Friendly Entry Gaming",
+      "Parts Upgrade on Existing PC",
+    ],
+    placeholder: "Optional: Your budget range or preferred specs (e.g. RTX 4060, RM 3,500)",
+  },
+  other: {
+    title: "How can our team help you today?",
+    subtitle: "Select a topic or type your inquiry:",
+    options: [
+      "Price Quote & Product Availability",
+      "Store Visit / In-Person Consultation",
+      "Warranty / Repair Follow-up",
+      "Trade-in / Sell Used Computer",
+      "General Inquiries & Other Services",
+    ],
+    placeholder: "Type a brief note about what you need...",
+  },
+};
+
+export default function Contact({ content }) {
+  const section = content?.landing?.contact || {};
+  const business = content?.business || {};
+  const tel = telLinkFor(business);
+
+  const [currentStep, setCurrentStep] = useState(1);
+  const [selectedCat, setSelectedCat] = useState("repair");
+  const [selectedDetail, setSelectedDetail] = useState("");
+  const [customNote, setCustomNote] = useState("");
+
+  const activeCategory = CATEGORIES.find((c) => c.id === selectedCat) || CATEGORIES[0];
+  const activeDetailsConfig = CATEGORY_DETAILS[selectedCat] || CATEGORY_DETAILS.repair;
+
+  const cards = [
+    {
+      icon: "whatsapp",
+      title: "WhatsApp",
+      main: business?.whatsappDisplay ? `+60 ${business.whatsappDisplay}` : "+60 11-5757 9655",
+      sub: "Chat with us for quick answers and quotation.",
+      href: waLink("Hi SK IT Services, I would like to enquire about your services.", business),
+      isExternal: true,
+    },
+    {
+      icon: "phone",
+      title: "Phone Call",
+      main: business?.phoneDisplay || "+60 19-239 9656",
+      sub: "Mon – Sat, 10AM – 7PM\n(Closed on Sunday)",
+      href: tel,
+      isExternal: false,
+    },
+    {
+      icon: "mail",
+      title: "Email",
+      main: business?.email || "skitsvc@gmail.com",
+      sub: "We'll get back to you as soon as possible.",
+      href: `mailto:${business?.email || "skitsvc@gmail.com"}`,
+      isExternal: false,
+    },
+    {
+      icon: "pin",
+      title: "Visit Our Store",
+      main: "Plaza Imbi, Kuala Lumpur",
+      sub: "Come to our store for product enquiries, repairs or consultation.",
+      href: business?.mapsUrl || "https://www.google.com/maps/search/?api=1&query=Imbi+Plaza+Jalan+Imbi+Kuala+Lumpur",
+      isExternal: true,
+    },
+  ];
+
+  const handleCategoryClick = (catId) => {
+    setSelectedCat(catId);
+    setSelectedDetail("");
+    setCurrentStep(2);
   };
 
-  const canNext = step === 0 ? !!device : step === 1 ? !!model : !!issue;
-  const next = () => canNext && setStep((s) => s + 1);
-  const pickDevice = (d) => { setDevice(d); setModel(""); };
-  const cards = section.cards.map((card) => ({
-    ...card,
-    main: card.main || (card.action === "phone" ? business.phoneDisplay : card.action === "whatsapp" ? (business.whatsappDisplay || "011-57579656") : card.action === "email" ? business.email : ""),
-    href: card.action === "whatsapp" ? waLink(undefined, business) : card.action === "phone" ? tel : card.action === "email" ? `mailto:${business.email}` : business.mapsUrl,
-  }));
+  const getWhatsAppMessage = () => {
+    let msg = `Hi SK IT Services! I would like to enquire about ${activeCategory.title}.`;
+    if (selectedDetail) {
+      msg += `\nDetail: ${selectedDetail}`;
+    }
+    if (customNote.trim()) {
+      msg += `\nNotes: ${customNote.trim()}`;
+    }
+    return msg;
+  };
+
+  const handleContinue = () => {
+    openWhatsApp(getWhatsAppMessage(), business);
+  };
+
+  const renderCatIcon = (iconName, isSelected = false) => {
+    if (iconName === "pc") return <PcTowerIcon className="h-5 w-5" />;
+    return <Icon name={iconName} className="h-5 w-5" />;
+  };
 
   return (
-    <section id="contact" className="bg-white py-14 sm:py-20">
+    <section id="contact" className="bg-white py-14 sm:py-20 text-ink">
       <div className="wrap">
-        <div className="grid items-center gap-6 lg:grid-cols-[1.2fr_1fr]">
+        {/* Top Header & 4 Quick Contact Cards */}
+        <div className="grid gap-6 lg:grid-cols-[1fr_1.9fr] items-start">
           <div>
-             <p className="eyebrow">{section.eyebrow}</p>
-             <h2 className="h-section mt-4">{section.title}<br /><span className="text-leaf">{section.titleAccent}</span></h2>
-             <p className="mt-4 max-w-[600px] text-[15px] leading-relaxed text-ink/75 sm:text-base">{section.description}</p>
+            <div className="flex items-center gap-3">
+              <span className="text-[11px] font-bold tracking-[.14em] uppercase text-leaf">
+                {section.eyebrow || "CONTACT US"}
+              </span>
+              <span className="h-[2px] w-12 bg-leaf/40 rounded-full" />
+            </div>
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-[42px] leading-[1.12]">
+              {section.title || "Let's Talk About"}<br />
+              <span className="text-leaf">{section.titleAccent || "Your IT Needs."}</span>
+            </h2>
+            <p className="mt-3.5 max-w-[440px] text-[13.5px] sm:text-[14.5px] leading-relaxed text-ink/75">
+              {section.description || "Need a computer, repair service or business IT support? Get in touch with our team through WhatsApp, phone, email or visit our store at Plaza Imbi, Kuala Lumpur."}
+            </p>
           </div>
-          <div className="relative overflow-hidden rounded-2xl">
-             <Photo src={section.image} alt={section.imageAlt} sizes="(min-width:1024px) 45vw, 100vw" className="h-[240px] w-full sm:h-[320px] lg:h-[230px]" />
-             <p className="absolute right-4 top-4 -rotate-6 whitespace-pre-line text-right font-hand text-2xl leading-[1.05] text-white drop-shadow-[0_2px_4px_rgba(0,0,0,.8)] sm:text-3xl">{section.note}</p>
-          </div>
-        </div>
 
-        <ul className="mt-9 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {cards.map((c) => (
-            <li key={c.title}>
-              <A href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="card flex h-full items-center gap-3.5 p-4 transition hover:-translate-y-0.5 hover:shadow-lg">
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-lime text-ink">{c.icon === "whatsapp" ? <WhatsAppIcon className="h-6 w-6" /> : <Icon name={c.icon} className="h-6 w-6" />}</span>
-                <span className="min-w-0"><span className="block text-xs font-bold">{c.title}</span><span className="block break-words text-sm font-extrabold leading-tight">{c.main}</span><span className="block text-xs text-ink/55">{c.sub}</span></span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
+            {cards.map((c) => (
+              <A
+                key={c.title}
+                href={c.href}
+                target={c.isExternal ? "_blank" : undefined}
+                rel={c.isExternal ? "noopener noreferrer" : undefined}
+                className="card group flex flex-col justify-between p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+              >
+                <div>
+                  <span className="grid h-11 w-11 place-items-center rounded-full bg-lime text-ink shadow-sm transition-transform group-hover:scale-105">
+                    {c.icon === "whatsapp" ? (
+                      <WhatsAppIcon className="h-5 w-5" />
+                    ) : (
+                      <Icon name={c.icon} className="h-5 w-5 stroke-[2.2]" />
+                    )}
+                  </span>
+                  <span className="mt-3.5 block text-xs font-bold text-ink/80">
+                    {c.title}
+                  </span>
+                  <span className="mt-0.5 block break-words text-sm font-extrabold text-ink leading-tight">
+                    {c.main}
+                  </span>
+                </div>
+                <span className="mt-2 block whitespace-pre-line text-[11px] leading-snug text-ink/60">
+                  {c.sub}
+                </span>
               </A>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </div>
+        </div>
 
-        <div className="mt-6 grid gap-5 lg:grid-cols-2">
-          <div className="card p-5 sm:p-7">
-             <div className="flex items-center gap-3"><span className="bubble h-11 w-11"><Icon name="chat" /></span><div><h3 className="text-xl font-extrabold">{section.quoteTitle}</h3><p className="text-xs text-ink/60">{section.quoteDescription}</p></div></div>
+        {/* Main Middle Section: "How Can We Help You?" + "Our Store" */}
+        <div className="mt-7 grid gap-6 lg:grid-cols-[1.32fr_1fr] items-stretch">
+          {/* Left Card: Category Selection / Multi-step */}
+          <div className="card flex flex-col justify-between p-6 sm:p-7 h-full">
+            {/* Step 1: Default View (Matches Image 1 100%) */}
+            {currentStep === 1 && (
+              <div className="flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-2xl sm:text-[26px] font-extrabold text-ink tracking-tight">
+                    {section.quoteTitle || "How Can We Help You?"}
+                  </h3>
+                  <p className="mt-1.5 text-xs sm:text-[13px] text-ink/65 leading-relaxed">
+                    {section.quoteDescription || "Choose a category to get started. We'll direct you to WhatsApp with the relevant details to assist you faster."}
+                  </p>
 
-            {/* stepper */}
-            <ol className="mt-5 flex items-center gap-2 sm:gap-3" aria-label="Progress">
-               {quote.steps.map((s, i) => (
-                <li key={s} className={`flex items-center gap-2 ${i < 2 ? "flex-1" : ""}`} aria-current={i === step ? "step" : undefined}>
-                  <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full border text-sm font-bold sm:h-[34px] sm:w-[34px] ${i <= step ? "border-[#8cc43f] bg-[#8cc43f] text-[#1b2a12]" : "border-[#e1e3de] bg-white text-[#98a09a]"}`}>{i + 1}</span>
-                  <span className={`text-sm font-semibold sm:text-base ${i <= step ? "text-[#4a7a1f]" : "text-[#98a09a]"}`}>{s}</span>
-                  {i < 2 && <span className="h-px flex-1 bg-[#e1e3de]" />}
-                </li>
-              ))}
-            </ol>
-
-             <p className="mt-6 text-base text-[#6b736d] sm:text-lg">{step === 1 ? quote.subtitles[step].replace("your device", `your ${device}`) : quote.subtitles[step]}</p>
-
-            <div className="mt-4">
-              {step === 0 && (
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-2">
-                   {quote.devices.map(([ic, name]) => (
-                    <Tile key={name} selected={device === name} onClick={() => pickDevice(name)} className="min-h-[96px] flex-col gap-2 py-4 text-lg">
-                      <Icon name={ic} className="h-7 w-7" />{name}
-                    </Tile>
-                  ))}
+                  {/* 3x2 Category Grid */}
+                  <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {CATEGORIES.map((cat) => {
+                      const isSelected = selectedCat === cat.id;
+                      return (
+                        <button
+                          key={cat.id}
+                          type="button"
+                          onClick={() => handleCategoryClick(cat.id)}
+                          className={`group flex items-center justify-between gap-3 rounded-2xl p-3.5 text-left transition-all min-h-[76px] ${
+                            isSelected
+                              ? "border-2 border-leaf bg-mint/35 text-ink shadow-sm"
+                              : "border border-ink/10 bg-white hover:border-ink/20 hover:bg-mist/50 text-ink"
+                          }`}
+                        >
+                          <div className="flex items-center gap-3 min-w-0">
+                            <span
+                              className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl transition-colors ${
+                                isSelected
+                                  ? "bg-mint text-leaf-dark"
+                                  : "bg-mist text-ink/70 group-hover:bg-mint/40 group-hover:text-leaf-dark"
+                              }`}
+                            >
+                              {renderCatIcon(cat.icon, isSelected)}
+                            </span>
+                            <div className="min-w-0">
+                              <span className="block text-xs font-bold text-ink leading-snug">
+                                {cat.title}
+                              </span>
+                            </div>
+                          </div>
+                          <span
+                            className={`grid h-5 w-5 shrink-0 place-items-center rounded-full text-[10px] transition-colors ${
+                              isSelected
+                                ? "bg-lime text-ink"
+                                : "bg-mist text-ink/40 group-hover:bg-mint group-hover:text-leaf-dark"
+                            }`}
+                          >
+                            <Icon name="right" className="h-3 w-3 stroke-[2.5]" />
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
-              )}
-              {step === 1 && (
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-                   {(quote.models[device] || []).map((m) => (
-                    <Tile key={m} selected={model === m} onClick={() => setModel(m)} className="min-h-[84px] py-4 text-base sm:min-h-[96px]">{m}</Tile>
-                  ))}
+              </div>
+            )}
+
+            {/* Step 2: Details Flow */}
+            {currentStep === 2 && (
+              <div className="flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="inline-flex items-center gap-1.5 rounded-lg bg-mint/60 px-2.5 py-1 text-xs font-bold text-leaf-dark">
+                      {renderCatIcon(activeCategory.icon)}
+                      {activeCategory.title}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setCurrentStep(1)}
+                      className="text-xs font-bold text-leaf-dark hover:underline flex items-center gap-1"
+                    >
+                      <Icon name="left" className="h-3 w-3" />
+                      Change Category
+                    </button>
+                  </div>
+
+                  <h3 className="mt-3 text-xl sm:text-2xl font-extrabold text-ink tracking-tight">
+                    {activeDetailsConfig.title}
+                  </h3>
+                  <p className="mt-1 text-xs sm:text-sm text-ink/65">
+                    {activeDetailsConfig.subtitle}
+                  </p>
+
+                  {/* Quick option cards */}
+                  <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {activeDetailsConfig.options.map((opt) => {
+                      const isPicked = selectedDetail === opt;
+                      return (
+                        <button
+                          key={opt}
+                          type="button"
+                          onClick={() => setSelectedDetail(isPicked ? "" : opt)}
+                          className={`flex items-center justify-between rounded-xl px-3.5 py-2.5 text-left text-xs sm:text-[13px] font-semibold transition ${
+                            isPicked
+                              ? "border-2 border-leaf bg-mint/40 text-ink shadow-sm"
+                              : "border border-ink/10 bg-white hover:border-ink/20 hover:bg-mist/40 text-ink/80"
+                          }`}
+                        >
+                          <span className="leading-snug">{opt}</span>
+                          {isPicked && <Icon name="check" className="h-4 w-4 shrink-0 text-leaf" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  <div className="mt-3.5">
+                    <label className="block text-[11px] font-bold text-ink/70 mb-1">
+                      Device model or additional details (optional):
+                    </label>
+                    <input
+                      type="text"
+                      value={customNote}
+                      onChange={(e) => setCustomNote(e.target.value)}
+                      placeholder={activeDetailsConfig.placeholder}
+                      className="w-full rounded-xl border border-ink/15 bg-white px-3.5 py-2.5 text-xs sm:text-sm text-ink placeholder:text-ink/40 outline-none focus:border-leaf focus:ring-1 focus:ring-leaf transition"
+                    />
+                  </div>
                 </div>
-              )}
-              {step === 2 && (
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                   {quote.issues.map(([ic, name]) => (
-                    <Tile key={name} selected={issue === name} onClick={() => setIssue(name)} className="min-h-[60px] justify-start py-3 text-base">
-                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-[#e8f1dc] text-[#4a7a1f]"><Icon name={ic} className="h-5 w-5" /></span>{name}
-                    </Tile>
-                  ))}
+              </div>
+            )}
+
+            {/* Step 3: Confirmation Summary */}
+            {currentStep === 3 && (
+              <div className="flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="inline-flex items-center gap-1.5 rounded-lg bg-mint/60 px-2.5 py-1 text-xs font-bold text-leaf-dark">
+                      {renderCatIcon(activeCategory.icon)}
+                      {activeCategory.title}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setCurrentStep(2)}
+                      className="text-xs font-bold text-leaf-dark hover:underline flex items-center gap-1"
+                    >
+                      <Icon name="left" className="h-3 w-3" />
+                      Edit Details
+                    </button>
+                  </div>
+
+                  <h3 className="mt-3 text-xl sm:text-2xl font-extrabold text-ink tracking-tight">
+                    Ready to Connect on WhatsApp
+                  </h3>
+                  <p className="mt-1 text-xs sm:text-sm text-ink/65">
+                    Here is the message we&apos;ve prepared for our technical support team:
+                  </p>
+
+                  <div className="mt-4 rounded-2xl border border-leaf/20 bg-mint/30 p-4">
+                    <div className="flex items-center gap-2 text-xs font-bold text-leaf-dark">
+                      <WhatsAppIcon className="h-4 w-4 fill-current" />
+                      <span>WhatsApp Message Preview</span>
+                    </div>
+                    <p className="mt-2 text-xs sm:text-sm text-ink whitespace-pre-line leading-relaxed font-medium bg-white/80 p-3 rounded-xl border border-leaf/10 shadow-xs">
+                      {getWhatsAppMessage()}
+                    </p>
+                  </div>
                 </div>
-              )}
+              </div>
+            )}
+
+            {/* Stepper + CTA Button */}
+            <div className="mt-6 pt-2">
+              <div className="flex items-center justify-between" aria-label="Progress">
+                {/* Step 1 */}
+                <button
+                  type="button"
+                  onClick={() => setCurrentStep(1)}
+                  className="flex items-center gap-2 sm:gap-2.5 text-left transition hover:opacity-85"
+                >
+                  <span
+                    className={`grid h-7 w-7 sm:h-8 sm:w-8 shrink-0 place-items-center rounded-full text-xs sm:text-sm font-extrabold shadow-sm ${
+                      currentStep >= 1
+                        ? "bg-lime text-ink"
+                        : "border border-ink/15 bg-white text-ink/40"
+                    }`}
+                  >
+                    1
+                  </span>
+                  <div>
+                    <span className={`block text-xs font-bold leading-none ${currentStep === 1 ? "text-leaf-dark" : "text-ink"}`}>
+                      Category
+                    </span>
+                    <span className="block text-[10px] text-ink/60 mt-1 leading-none">
+                      {currentStep > 1 ? activeCategory.title : "Select a category"}
+                    </span>
+                  </div>
+                </button>
+
+                <span className={`h-0.5 flex-1 mx-2.5 sm:mx-4 transition-colors ${currentStep > 1 ? "bg-lime" : "bg-ink/10"}`} />
+
+                {/* Step 2 */}
+                <button
+                  type="button"
+                  onClick={() => setCurrentStep(2)}
+                  className="flex items-center gap-2 sm:gap-2.5 text-left transition hover:opacity-85"
+                >
+                  <span
+                    className={`grid h-7 w-7 sm:h-8 sm:w-8 shrink-0 place-items-center rounded-full text-xs sm:text-sm font-extrabold shadow-sm ${
+                      currentStep >= 2
+                        ? "bg-lime text-ink"
+                        : "border border-ink/15 bg-white text-ink/40"
+                    }`}
+                  >
+                    2
+                  </span>
+                  <div>
+                    <span className={`block text-xs font-bold leading-none ${currentStep === 2 ? "text-leaf-dark" : currentStep > 2 ? "text-ink" : "text-ink/40"}`}>
+                      Details
+                    </span>
+                    <span className="block text-[10px] mt-1 leading-none text-ink/60">
+                      {selectedDetail ? selectedDetail : "Share a few details"}
+                    </span>
+                  </div>
+                </button>
+
+                <span className={`h-0.5 flex-1 mx-2.5 sm:mx-4 transition-colors ${currentStep > 2 ? "bg-lime" : "bg-ink/10"}`} />
+
+                {/* Step 3 */}
+                <button
+                  type="button"
+                  onClick={() => setCurrentStep(3)}
+                  className="flex items-center gap-2 sm:gap-2.5 text-left transition hover:opacity-85"
+                >
+                  <span
+                    className={`grid h-7 w-7 sm:h-8 sm:w-8 shrink-0 place-items-center rounded-full text-xs sm:text-sm font-extrabold shadow-sm ${
+                      currentStep === 3
+                        ? "bg-lime text-ink"
+                        : "border border-ink/15 bg-white text-ink/40"
+                    }`}
+                  >
+                    3
+                  </span>
+                  <div>
+                    <span className={`block text-xs font-bold leading-none ${currentStep === 3 ? "text-leaf-dark" : "text-ink/40"}`}>
+                      Chat on WhatsApp
+                    </span>
+                    <span className="block text-[10px] text-ink/40 mt-1 leading-none">
+                      Continue to WhatsApp
+                    </span>
+                  </div>
+                </button>
+              </div>
+
+              {/* Big Action Button */}
+              <div className="mt-5 flex items-center gap-3">
+                {currentStep > 1 && (
+                  <button
+                    type="button"
+                    onClick={() => setCurrentStep(currentStep - 1)}
+                    className="inline-flex items-center gap-1.5 rounded-2xl border border-ink/15 bg-mist/60 px-4 py-3.5 text-xs sm:text-sm font-bold text-ink hover:bg-mist transition active:scale-[.98]"
+                  >
+                    <Icon name="left" className="h-4 w-4" />
+                    <span>Back</span>
+                  </button>
+                )}
+
+                <button
+                  type="button"
+                  onClick={handleContinue}
+                  className="btn-lime flex-1 rounded-2xl font-bold py-3.5 sm:py-4 px-6 flex items-center justify-center gap-2.5 shadow-sm hover:shadow transition-all active:scale-[.99]"
+                >
+                  <WhatsAppIcon className="h-5 w-5 fill-current" />
+                  <span className="text-sm sm:text-base font-bold">Continue to WhatsApp</span>
+                  <Icon name="arrow" className="h-4 w-4" />
+                </button>
+              </div>
+
+              <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-xs text-ink/55">
+                <Icon name="lock" className="h-3.5 w-3.5 text-ink/40" />
+                <span>No registration required. You&apos;ll be redirected to WhatsApp.</span>
+              </p>
             </div>
-
-            <div className="mt-7 flex items-center justify-between gap-3">
-              {step > 0 ? (
-                 <button onClick={() => setStep(step - 1)} className="inline-flex items-center gap-2 rounded-2xl bg-[#f1f3ee] px-5 py-3.5 font-bold text-[#3b443d] hover:bg-[#e8ebe4]"><Icon name="left" className="h-4 w-4" />{quote.backLabel}</button>
-              ) : <span />}
-              {step < 2 ? (
-                 <button onClick={next} disabled={!canNext} className="inline-flex items-center gap-2 rounded-2xl bg-[#8cc43f] px-6 py-3.5 font-bold text-[#17210f] transition hover:bg-[#7db534] disabled:cursor-not-allowed disabled:opacity-50">{quote.continueLabel}<Icon name="arrow" className="h-4 w-4" /></button>
-              ) : (
-                 <button onClick={submit} disabled={!canNext} className="inline-flex items-center gap-2 rounded-2xl bg-[#8cc43f] px-5 py-3.5 font-bold text-[#17210f] transition hover:bg-[#7db534] disabled:cursor-not-allowed disabled:opacity-50 sm:px-7"><WhatsAppIcon />{quote.submitLabel}<Icon name="arrowUp" className="h-4 w-4" /></button>
-              )}
-            </div>
-             {step === 2 && <p className="mt-4 text-center text-sm text-[#6b736d]">{quote.privacyNotice}</p>}
-             {sent && <p role="status" className="mt-3 text-center text-sm text-leaf-dark">{quote.successMessage}</p>}
           </div>
 
-          <div className="card p-5 sm:p-7">
-             <div className="flex items-center gap-3"><span className="bubble h-11 w-11"><Icon name="store" /></span><div><h3 className="text-xl font-extrabold">{section.storeTitle}</h3><p className="text-xs text-ink/60">{section.storeDescription}</p></div></div>
-             <Photo src={section.storeImage} alt={section.storeImageAlt} sizes="(min-width:1024px) 45vw, 100vw" className="mt-5 h-48 w-full rounded-xl sm:h-56" />
-            <div className="mt-5 grid gap-5 sm:grid-cols-[1.2fr_1fr]">
-              <div className="space-y-4 text-sm">
-                 <div className="flex gap-3"><Icon name="pin" className="mt-0.5 h-5 w-5 shrink-0 text-leaf" /><address className="not-italic leading-snug"><b>{business.addressLines[0]}</b><br />{business.addressLines.slice(1).join(" ")}<br /><A href={business.mapsUrl} target="_blank" rel="noopener noreferrer" className="font-bold text-leaf-dark hover:underline">{section.directionsLabel}</A></address></div>
-                 <div className="flex gap-3"><Icon name="clock" className="mt-0.5 h-5 w-5 shrink-0 text-leaf" /><div className="leading-snug"><b>{section.hoursLabel}</b><br />{business.hours.map((h) => <span key={h} className="block">{h}</span>)}</div></div>
+          {/* Right Card: "Our Store" */}
+          <div className="card flex flex-col justify-between p-6 sm:p-7 h-full">
+            <div>
+              <div className="flex items-center gap-3">
+                <span className="bubble h-11 w-11">
+                  <Icon name="store" className="h-5 w-5" />
+                </span>
+                <div>
+                  <h3 className="text-xl font-extrabold text-ink leading-tight">Our Store</h3>
+                  <p className="text-xs text-ink/60 mt-0.5">Visit us for product enquiries, repairs or consultation.</p>
+                </div>
               </div>
-               <MapCard business={business} />
+
+              {/* Store Photo */}
+              <div className="mt-5 overflow-hidden rounded-xl border border-ink/5 shadow-inner">
+                <Photo
+                  src={section.storeImage || "/images/store.jpg"}
+                  alt={section.storeImageAlt || "SK IT Services store at Plaza Imbi"}
+                  sizes="(min-width:1024px) 40vw, 100vw"
+                  className="h-[195px] sm:h-[215px] w-full object-cover"
+                />
+              </div>
+            </div>
+
+            <div className="mt-5 grid grid-cols-1 sm:grid-cols-[1.15fr_1fr] gap-4 items-start pt-1">
+              <div className="space-y-4 text-xs">
+                <div className="flex gap-2.5 items-start">
+                  <Icon name="pin" className="mt-0.5 h-4 w-4 shrink-0 text-leaf" />
+                  <div>
+                    <b className="block text-xs font-bold text-ink">SK IT Services</b>
+                    <p className="mt-0.5 text-[11px] text-ink/70 leading-snug">
+                      Lot 1.36, 1st Floor, Plaza Imbi,<br />
+                      Jalan Imbi, 55100 Kuala Lumpur,<br />
+                      Malaysia.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-2.5 items-start">
+                  <Icon name="clock" className="mt-0.5 h-4 w-4 shrink-0 text-leaf" />
+                  <div>
+                    <b className="block text-xs font-bold text-ink">Operating Hours</b>
+                    <p className="mt-0.5 text-[11px] text-ink/70 leading-snug">
+                      Monday – Saturday: 10:00 AM – 7:00 PM<br />
+                      Sunday: Closed
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Google Map Widget */}
+              <MapCard business={business} />
             </div>
           </div>
         </div>
 
-        <div className="dark-sec mt-6 flex flex-col gap-6 rounded-2xl bg-ink p-6 text-white sm:p-7 lg:flex-row lg:items-center lg:justify-between">
-           <div className="max-w-[440px]"><p className="text-[11px] font-bold uppercase tracking-[.14em] text-lime">{section.stillQuestionsEyebrow}</p><h3 className="mt-1 text-2xl font-extrabold text-lime sm:text-3xl">{section.stillQuestionsTitle}</h3><p className="mt-2 text-sm text-white/70">{section.stillQuestionsText}</p></div>
-          <ul className="grid grid-cols-2 gap-4 overflow-hidden sm:grid-cols-4">
-             {section.stillQuestionsItems.map(([ic, t]) => (
-               <li key={t}><A href={waLink(`Hello SK IT Services! ${t}: `, business)} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 text-center text-xs font-semibold text-white/85 hover:text-lime"><span className="grid h-12 w-12 place-items-center rounded-full border border-white/15 text-lime"><Icon name={ic} className="h-5 w-5" /></span><span className="break-words">{t}</span></A></li>
-            ))}
-          </ul>
+        {/* Bottom Banner: "STILL HAVE QUESTIONS? We're Here to Help." */}
+        <div className="dark-sec mt-6 rounded-2xl bg-ink p-6 text-white sm:p-7 flex flex-col md:flex-row items-center justify-between gap-5 ring-1 ring-white/10">
+          {/* Left: Icon + Title */}
+          <div className="flex items-center gap-4">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-white/15 bg-white/[.07] text-lime">
+              <Icon name="chatDots" className="h-6 w-6" />
+            </span>
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[.14em] text-lime">
+                {section.stillQuestionsEyebrow || "STILL HAVE QUESTIONS?"}
+              </p>
+              <h3 className="mt-0.5 text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+                We&apos;re <span className="text-lime">{section.stillQuestionsTitle ? section.stillQuestionsTitle.replace("We're ", "") : "Here to Help."}</span>
+              </h3>
+            </div>
+          </div>
+
+          {/* Middle: Short text matching Image 1 */}
+          <div className="text-center md:text-left">
+            <p className="text-sm sm:text-[15px] font-semibold text-white/95">
+              Not sure what you need? Just drop us a message.
+            </p>
+            <p className="text-xs sm:text-sm text-white/70 mt-0.5">
+              Our friendly team is ready to assist you.
+            </p>
+          </div>
+
+          {/* Right: Pill Button using website lime brand style */}
+          <div>
+            <A
+              href={waLink("Hi SK IT Services, I'm not sure what I need. Could you please advise me?", business)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-lime inline-flex items-center gap-2.5 rounded-full px-6 py-2.5 text-sm sm:text-base font-bold shadow-sm transition hover:scale-[1.02] active:scale-[.98] whitespace-nowrap"
+            >
+              <WhatsAppIcon className="h-5 w-5 fill-current" />
+              <span>Chat With Us →</span>
+            </A>
+          </div>
         </div>
       </div>
     </section>

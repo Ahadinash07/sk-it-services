@@ -1,4 +1,4 @@
-import { Laptop, Monitor, Wrench, Users, Box, Mouse, Cpu, MemoryStick, Settings, Wifi, Shield, ShieldCheck, Headphones, Tag, Gem, Gamepad2, Briefcase, Video, MessageSquare, Search, FileText, Star, ThumbsUp, HelpCircle, Handshake, Tablet, PlusCircle, Power, Gauge, BatteryFull, Keyboard, Phone, Mail, MapPin, Clock, Store, Send, ArrowRight, ArrowUpRight, ChevronRight, ChevronLeft, Plus, Minus, Menu, X, Check, CheckCircle2 } from "lucide-react";
+import { Laptop, Monitor, Wrench, Users, Box, Mouse, Cpu, MemoryStick, Settings, Wifi, Shield, ShieldCheck, Headphones, Tag, Gem, Gamepad2, Briefcase, Video, MessageSquare, Search, FileText, Star, ThumbsUp, HelpCircle, Handshake, Tablet, PlusCircle, Power, Gauge, BatteryFull, Keyboard, Phone, Mail, MapPin, Clock, Store, Send, ArrowRight, ArrowUpRight, ChevronRight, ChevronLeft, Plus, Minus, Menu, X, Check, CheckCircle2, ShoppingCart, Building2, Lock, MessageSquareMore, MessageCircleMore, Server, HardDrive } from "lucide-react";
 
 const MAP = {
   laptop: Laptop, monitor: Monitor, wrench: Wrench, users: Users, box: Box, mouse: Mouse, cpu: Cpu, ram: MemoryStick,
@@ -7,6 +7,8 @@ const MAP = {
   handshake: Handshake, tablet: Tablet, plus: PlusCircle, power: Power, gauge: Gauge, battery: BatteryFull, keyboard: Keyboard,
   phone: Phone, mail: Mail, pin: MapPin, clock: Clock, store: Store, send: Send, arrow: ArrowRight, arrowUp: ArrowUpRight,
   right: ChevronRight, left: ChevronLeft, plusS: Plus, minus: Minus, menu: Menu, x: X, check: Check, checkc: CheckCircle2,
+  cart: ShoppingCart, building: Building2, lock: Lock, chatDots: MessageSquareMore, chatCircle: MessageCircleMore,
+  server: Server, harddrive: HardDrive,
 };
 export default function Icon({ name, className = "h-5 w-5", ...p }) {
   const C = MAP[name] || Box;
