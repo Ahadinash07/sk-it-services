@@ -3,9 +3,10 @@
   "business": {
     "name": "SK IT Services",
     "tagline": "Connected by Technology, Powered by Trust.",
-    "phoneRaw": "+601157579656",
+    "phoneRaw": "+60192399656",
     "phoneWa": "601157579656",
-    "phoneDisplay": "+60 11-5757 9656",
+    "phoneDisplay": "+60192399656",
+    "whatsappDisplay": "011-57579656",
     "email": "skitsvc@gmail.com",
     "contactPerson": "Syed Abdul Kather",
     "addressLines": [
@@ -123,9 +124,9 @@
       "eyebrow": "Shop Our Products",
       "title": "Computers & Technology",
       "titleAccent": "for Every Need.",
-      "description": "Explore our range of new and refurbished computers, components and accessories, with trusted brands and expert advice to help you find the right solution.",
+      "description": "Explore our range of laptops, desktops, computer parts and accessories. Find the right technology for your needs and budget with guidance from our team.",
       "sourcingTitle": "Looking for Something Specific?",
-      "sourcingText": "Can't find what you're looking for? Contact our team and we'll help you source the right product.",
+      "sourcingText": "Can't Find What You're Looking For? Looking for a specific laptop, computer or part? Chat with our team and we'll help you find the right option.",
       "trust": [
         [
           "diamond",
@@ -160,7 +161,7 @@
       "eyebrow": "Why Choose SK IT",
       "title": "More Than a Computer Shop.",
       "titleAccent": "A Partner You Can Trust.",
-      "description": "At SK IT Services, we combine quality products, professional expertise and genuine customer support to deliver the right IT solutions for individuals and businesses.",
+      "description": "At SK IT Services, we combine quality products, technical expertise and friendly support to deliver practical IT solutions for individuals and businesses.",
       "image": "/images/why-hero.jpg",
       "imageAlt": "Inside the SK IT Services store"
     },
@@ -168,7 +169,7 @@
       "eyebrow": "How We Work",
       "title": "A Simple Process.",
       "titleAccent": "From Inquiry to Solution.",
-      "description": "We make it easy for you to get the right IT solution. Whether it's a new computer, a repair or a business IT request, our process is simple, transparent and hassle-free.",
+      "description": "Getting the right IT solution is easy with SK IT Services. From your first enquiry to the final solution, we make every step simple and hassle-free.",
       "image": "/images/how-hero.jpg",
       "imageAlt": "SK IT technician at work",
       "note": "Simple.\nTransparent.\nHassle-free."
@@ -278,39 +279,39 @@
       "title": "Laptop & Computer Repair",
       "text": "Screen, battery, keyboard, charging or performance issues? We help identify the fault and discuss the next step.",
       "items": [
-        "Screen, keyboard & battery repairs",
-        "Charging port & hardware issues",
-        "Virus removal, cleaning & maintenance"
+        "Screen, hinge, keyboard & keyboard repairs",
+        "Motherboard, power & charging issues",
+        "Battery replacement, Overheating & maintenance"
       ],
-      "cta": "Discuss a repair",
+      "cta": "Let's Fix It!",
       "msg": "I'd like to discuss a laptop / computer repair."
     },
     {
       "id": "refurbished",
       "img": "/images/why-5.jpg",
       "kicker": "Smarter Spending",
-      "title": "Refurbished & New Computers",
+      "title": "Laptop & Computer Sales",
       "text": "Find a computer that suits your budget, whether it is for classes, everyday work or your business.",
       "items": [
-        "Tested refurbished laptops",
-        "New desktops & all-in-one PCs",
-        "Help choosing the right device"
+        "New & refurbished laptops",
+        "Desktop PCs & all-in-one computers",
+        "Devices for work, study & business"
       ],
-      "cta": "Find your computer",
+      "cta": "Get a Quote",
       "msg": "I'm looking for a refurbished or new computer."
     },
     {
       "id": "parts",
       "img": "/images/prod-1.jpg",
       "kicker": "Parts & Performance",
-      "title": "Computer Parts, RAM & SSD",
+      "title": "Computer Parts & Upgrades",
       "text": "Give an older computer a new lease on life with the right upgrades and accessories.",
       "items": [
-        "RAM and SSD upgrades",
-        "Chargers, batteries & keyboards",
-        "Mice, bags, cables & accessories"
+        "RAM, SSD & storage upgrades",
+        "Batteries, chargers & keyboards",
+        "Computer components & accessories"
       ],
-      "cta": "Plan an upgrade",
+      "cta": "Upgrade Now",
       "msg": "I'd like to plan a RAM / SSD upgrade."
     },
     {
@@ -320,11 +321,11 @@
       "title": "Software Installation & Setup",
       "text": "Get your system set up properly with operating systems, essential software, drivers and security settings.",
       "items": [
-        "Windows & OS installation",
-        "Office and business software",
-        "Drivers, updates & backup setup"
+        "Windows installation & setup",
+        "Software, drivers & updates",
+        "System formatting & optimisation"
       ],
-      "cta": "Set up my device",
+      "cta": "Setup Now",
       "msg": "I need software installation / setup for my device."
     },
     {
@@ -334,39 +335,39 @@
       "title": "Networking & Wi-Fi Setup",
       "text": "Build a more reliable connection at home, in your shop or across your office.",
       "items": [
-        "Wi-Fi coverage & router setup",
-        "LAN cabling, switches & access points",
-        "Slow network troubleshooting"
+        "Wi-Fi router & network setup",
+        "LAN cabling & access points",
+        "Network troubleshooting & support"
       ],
-      "cta": "Improve my network",
+      "cta": "Connect Now",
       "msg": "I'd like help with networking / Wi-Fi setup."
     },
     {
       "id": "custom-build",
       "img": "/images/prod-4.jpg",
       "kicker": "Built Around You",
-      "title": "Custom PC Builder",
+      "title": "Custom PC builds",
       "text": "A PC built around what you do and what you want to spend — not a one-size-fits-all setup.",
       "items": [
-        "Gaming & streaming builds",
-        "Video editing workstations",
-        "Office and home PCs"
+        "Gaming & performance PCs",
+        "Office & business workstations",
+        "Custom specifications & upgrades"
       ],
-      "cta": "Plan my build",
+      "cta": "Build My PC",
       "msg": "I'd like to plan a custom PC build."
     },
     {
       "id": "business-it",
       "img": "/images/why-3.jpg",
       "kicker": "Business Technology",
-      "title": "IT Consulting & Business Support",
+      "title": "Business IT Support & Consulting",
       "text": "Practical technology advice for small businesses, growing teams and new office setups.",
       "items": [
-        "IT needs assessment & planning",
-        "Hardware recommendations & budgets",
-        "Ongoing support & helpdesk"
+        "IT assessment & planning",
+        "Hardware recommendations & solutions",
+        "Technical support & troubleshooting"
       ],
-      "cta": "Talk to an expert",
+      "cta": "Get Support",
       "msg": "I'd like to talk to an expert about IT support for my business."
     },
     {
@@ -376,12 +377,26 @@
       "title": "Online Sales & Accessories",
       "text": "Ask us about laptops, computers, parts and accessories, with guidance to help you choose.",
       "items": [
-        "Laptops and desktops",
-        "Computer parts & accessories",
-        "Product guidance before purchase"
+        "Laptops, desktops & accessories",
+        "Computer parts & peripherals",
+        "Product advice before purchase"
       ],
-      "cta": "Ask about products",
+      "cta": "Shop Now",
       "msg": "I'd like to ask about your products and accessories."
+    },
+    {
+      "id": "data-recovery",
+      "img": "/images/why-6.jpg",
+      "kicker": "Recover Your Data",
+      "title": "Data Recovery & Backup",
+      "text": "Lost important files? We help recover data from damaged drives and set up backup solutions to protect your data.",
+      "items": [
+        "Data recovery from damaged drives",
+        "Backup setup & configuration",
+        "Data transfer & migration"
+      ],
+      "cta": "Save My Data",
+      "msg": "I need help with data recovery or backup setup."
     }
   ],
   "trustStrip": [
@@ -423,8 +438,8 @@
       "items": [
         "Business laptops",
         "Student laptops",
-        "Refurbished laptops",
-        "Gaming & high performance"
+        "New & Refurbished laptops",
+        "Gaming & high performance laptops"
       ],
       "cta": "Shop Laptops",
       "item": "Laptops"
@@ -440,7 +455,7 @@
         "Office desktops",
         "Workstations",
         "All-in-one PCs",
-        "Refurbished desktops"
+        "New & Refurbished desktops"
       ],
       "cta": "Shop Desktops",
       "item": "Desktops"
@@ -482,15 +497,15 @@
     "types": [
       [
         "gamepad",
-        "Gaming Setups"
+        "Gaming Setup"
       ],
       [
         "briefcase",
-        "Work & Study Setups"
+        "Work & Study Setup"
       ],
       [
         "video",
-        "Content Creation Setups"
+        "Content Creation Setup"
       ],
       [
         "gear",
@@ -501,22 +516,22 @@
       [
         "chat",
         "Tell Us Your Needs",
-        "Share your usage, budget and preferences."
+        "Share your usage and budget."
       ],
       [
         "cpu",
-        "Get Parts Recommendations",
-        "We'll suggest the best components for your needs."
+        "Get Our Recommendations",
+        "We'll suggest suitable components."
       ],
       [
         "wrench",
-        "Professional Assembly",
-        "Our team will build and test your PC for reliability."
+        "Confirm Your Build",
+        "Review and approve your quotation."
       ],
       [
         "monitor",
         "Ready to Use",
-        "Get your custom PC, ready for work, study or play."
+        "Your PC is assembled and tested."
       ]
     ],
     "points": [
@@ -544,7 +559,7 @@
       "icon": "users",
       "img": "/images/why-4.jpg",
       "title": "Experienced Team",
-      "text": "Skilled technicians with hands-on experience in computers, repairs and IT solutions."
+      "text": "Skilled technicians with hands-on experience in computer repairs and IT solutions."
     },
     {
       "icon": "tag",
@@ -556,7 +571,7 @@
       "icon": "headset",
       "img": "/images/why-6.jpg",
       "title": "Friendly Support",
-      "text": "We take the time to understand your needs and provide clear guidance."
+      "text": "We take time to understand your concerns and explain your options clearly."
     },
     {
       "icon": "gear",
@@ -568,7 +583,7 @@
       "icon": "handshake",
       "img": "/images/why-1.jpg",
       "title": "Customer Satisfaction",
-      "text": "Our customers' trust and positive feedback keep us moving forward."
+      "text": "Your trust and feedback inspire us to keep improving our service."
     }
   ],
   "process": [
@@ -576,25 +591,25 @@
       "icon": "chat",
       "img": "/images/why-6.jpg",
       "title": "Get in Touch",
-      "text": "Contact us via WhatsApp, phone or visit our store. Tell us your needs or issues."
+      "text": "Contact us via WhatsApp or visit our store. Tell us what you need, and we'll be happy to assist."
     },
     {
       "icon": "search",
       "img": "/images/why-2.jpg",
-      "title": "Assessment & Diagnosis",
-      "text": "We inspect and diagnose your device or review your requirements to find the best solution."
+      "title": "Assessment & Recommendations",
+      "text": "We'll assess your requirements and recommend suitable solutions based on your needs and budget."
     },
     {
       "icon": "file",
       "img": "/images/contact-hero.jpg",
       "title": "Receive a Free Quote",
-      "text": "We provide a clear quotation based on the diagnosis and your needs before proceeding."
+      "text": "We'll provide a quotation for your review and approval before proceeding."
     },
     {
       "icon": "shield",
       "img": "/images/why-1.jpg",
       "title": "Approval & Completion",
-      "text": "Once you approve, we proceed with the agreed service, repair, setup or supply. Your device or solution will be ready for you to use."
+      "text": "⁠⁠Once approved, we'll arrange your repair, product or IT solution and let you know when it's ready."
     }
   ],
   "stats": [
@@ -656,19 +671,19 @@
       "qa": [
         [
           "What is SK IT Services?",
-          "SK IT Services is a Kuala Lumpur based computer shop offering new and refurbished computers, parts, accessories, repairs, custom PC builds and IT support for individuals and businesses, all under one roof."
+          "SK IT Services is a computer shop offering laptop and desktop sales, computer repairs, upgrades, accessories and IT support for individuals and businesses."
         ],
         [
           "Where are you located?",
-          "We are at Lot 1.36, First Floor, Imbi Plaza, Jalan Imbi, 55100 Kuala Lumpur, Malaysia."
+          "We're located at Lot 1.36, 1st Floor, Plaza Imbi, Jalan Imbi, 55100 Kuala Lumpur."
         ],
         [
           "What are your operating hours?",
-          "Monday to Saturday, 10:00 AM – 7:00 PM. We are closed on Sunday."
+          "We're open Monday to Saturday, 10:00 AM to 7:00 PM. Closed on Sundays and selected public holidays."
         ],
         [
           "Can I walk in without an appointment?",
-          "Yes. You are welcome to visit our store during operating hours. For faster service on repairs, you can WhatsApp us first with your device model and issue."
+          "Yes! Walk-ins are welcome during our operating hours. You can also WhatsApp us before visiting to check availability."
         ]
       ]
     },
@@ -756,7 +771,7 @@
       "qa": [
         [
           "I have another question. Who do I contact?",
-          "WhatsApp or call us on +60 11-5757 9656, or email skitsvc@gmail.com. We will get back to you as soon as possible."
+          "WhatsApp us on 011-57579656 or call +60192399656, or email skitsvc@gmail.com. We will get back to you as soon as possible."
         ]
       ]
     }
@@ -881,7 +896,7 @@
   },
   "seo": {
     "title": "SK IT Services | Laptop Repair, Refurbished Laptops & IT Support in Kuala Lumpur",
-    "description": "Buy refurbished laptops, get laptop repair and computer repair, or book office network setup and IT support in Kuala Lumpur with SK IT Services. Call +60 11-5757 9656 for a free quote.",
+    "description": "Buy refurbished laptops, get laptop repair and computer repair, or book office network setup and IT support in Kuala Lumpur with SK IT Services. Call +60192399656 for a free quote.",
     "keywords": "laptop repair Kuala Lumpur, computer repair Kuala Lumpur, refurbished laptops Kuala Lumpur, custom PC builder Kuala Lumpur, IT support for small business Kuala Lumpur",
     "canonicalUrl": "https://www.skitservices.com.my",
     "openGraphTitle": "SK IT Services | Your Trusted Partner in IT Solutions",

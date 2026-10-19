@@ -52,7 +52,7 @@ export default function Contact({ content }) {
   const pickDevice = (d) => { setDevice(d); setModel(""); };
   const cards = section.cards.map((card) => ({
     ...card,
-    main: card.main || (card.action === "phone" || card.action === "whatsapp" ? business.phoneDisplay : card.action === "email" ? business.email : ""),
+    main: card.main || (card.action === "phone" ? business.phoneDisplay : card.action === "whatsapp" ? (business.whatsappDisplay || "011-57579656") : card.action === "email" ? business.email : ""),
     href: card.action === "whatsapp" ? waLink(undefined, business) : card.action === "phone" ? tel : card.action === "email" ? `mailto:${business.email}` : business.mapsUrl,
   }));
 

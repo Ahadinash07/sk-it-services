@@ -75,7 +75,7 @@ export default function Header({ content }) {
           </nav>
           <div className="flex items-center gap-3 sm:gap-4">
             <span className="hidden h-6 w-px bg-white/15 lg:block" />
-             <A href={waLink(undefined, business)} target="_blank" rel="noopener noreferrer" className="hidden items-center gap-2 text-sm font-semibold hover:text-lime lg:flex"><WhatsAppIcon className="h-5 w-5 text-lime" />{business.phoneDisplay}</A>
+             <A href={waLink(undefined, business)} target="_blank" rel="noopener noreferrer" className="hidden items-center gap-2 text-sm font-semibold hover:text-lime lg:flex"><WhatsAppIcon className="h-5 w-5 text-lime" />{business.whatsappDisplay || "011-57579656"}</A>
              <A href={tel} className="btn btn-ghost hidden !py-2.5 lg:inline-flex"><Icon name="phone" className="h-4 w-4" />{labels.callLabel}</A>
              <button onClick={open} className="btn btn-lime hidden !py-2.5 lg:inline-flex">{labels.quoteLabel}</button>
              <A href={tel} aria-label={labels.mobileCallLabel} className="p-1.5 text-lime lg:hidden"><Icon name="phone" className="h-6 w-6" /></A>

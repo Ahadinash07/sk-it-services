@@ -9,7 +9,7 @@ function ContactDetails({ business, footer }) {
   return (
     <ul className="space-y-3.5 text-sm">
        <li><A href={tel} className="flex items-center gap-3 font-bold hover:text-lime"><Dot><Icon name="phone" className="h-4 w-4" /></Dot>{business.phoneDisplay}</A></li>
-       <li><A href={waLink(undefined, business)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 font-bold hover:text-lime"><Dot><WhatsAppIcon className="h-4 w-4" /></Dot>{footer.whatsappLabel}</A></li>
+       <li><A href={waLink(undefined, business)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 font-bold hover:text-lime"><Dot><WhatsAppIcon className="h-4 w-4" /></Dot>{footer.whatsappLabel} · {business.whatsappDisplay || "011-57579656"}</A></li>
        <li><A href={`mailto:${business.email}`} className="flex items-center gap-3 font-bold hover:text-lime break-all"><Dot><Icon name="mail" className="h-4 w-4" /></Dot>{business.email}</A></li>
        <li><A href={business.mapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 text-white/90 hover:text-lime"><Dot><Icon name="pin" className="h-4 w-4" /></Dot><span className="leading-snug">{business.addressOneLine}</span></A></li>
        <li className="flex items-start gap-3 text-white/90"><Dot><Icon name="clock" className="h-4 w-4" /></Dot><span className="leading-snug">{business.hours[0]}<br />{business.hours[1]}<br />{business.hours[2]}</span></li>

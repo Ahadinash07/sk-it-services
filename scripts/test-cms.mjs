@@ -12,6 +12,10 @@ assert.equal(defaults.schemaVersion, 1);
 assert.ok(defaults.landing.hero.title);
 assert.ok(defaults.seo.title);
 assert.ok(defaults.tracking);
+assert.equal(defaults.business.phoneRaw, "+60192399656");
+assert.equal(defaults.business.phoneWa, "601157579656");
+assert.equal(defaults.business.phoneDisplay, "+60192399656");
+assert.equal(defaults.business.whatsappDisplay, "011-57579656");
 
 const migrated = mergeContentDefaults({ schemaVersion: 1, business: defaults.business });
 assert.equal(migrated.landing.header.logo, "/logo.png");

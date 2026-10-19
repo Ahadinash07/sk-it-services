@@ -31,11 +31,11 @@ The first request creates `storage/content.json` from the editable defaults. The
 ## CMS workflow
 
 1. Open `/admin` directly; there is no login screen.
-2. Select a section from the left navigation.
-3. Edit the JSON record. This exposes headings, subheadings, paragraphs, button labels, links, icons, points, FAQs, reviews, business details, footer, legal copy, quote options, SEO metadata, and tracking settings.
-4. Use **Add item** or **Delete item** for collection entries such as services, products, reviews, FAQs, navigation links, statistics, and process steps.
-5. Upload an image from the CMS. Copy the returned `/uploads/...` path into the relevant `image`, `img`, `logo`, or SEO image field.
-6. Click **Save changes**, then open the public site. No `npm run build` is required after a content save.
+2. Select a section from the left navigation. The sections are grouped as Website, Your content, and Settings.
+3. Edit the labelled input fields. Headings, paragraphs, button labels, links, icons, points, FAQs, reviews, business details, footer, legal copy, quote options, SEO metadata, and tracking settings are shown as readable fields instead of a JSON document.
+4. Use **Add** or **Remove item** for collection entries such as services, products, reviews, FAQs, navigation links, statistics, and process steps.
+5. Image fields include a live preview. Type an existing image path or use **Choose a new picture** to upload a JPEG, PNG, WebP, or GIF (up to 5 MB).
+6. Click **Save changes**, then use **View website** to check the public page. No `npm run build` is required after a content save.
 
 The write APIs require a same-origin request, but this direct-access mode is not authentication. Anyone who can access the deployed site may be able to edit the CMS. If the CMS is public on the internet, protect `/admin` and `/api/admin/*` with Hostinger Basic Auth, an IP allowlist, or a reverse proxy before launch.
 
@@ -98,7 +98,7 @@ docker run --rm -p 3000:3000 \
 ## Project structure
 
 - `app/page.js` — request-time public landing page
-- `app/admin/page.js` and `components/AdminClient.js` — CMS dashboard
+- `app/admin/page.js`, `components/AdminClient.js`, and `components/AdminFieldEditor.js` — CMS dashboard and readable field editor
 - `app/api/admin/` — authenticated content, CRUD, auth, and upload APIs
 - `lib/cms/` — default schema, validation, auth, atomic JSON storage, and request helpers
 - `storage/content.json` — runtime CMS document (created on first request; not committed)

@@ -61,7 +61,7 @@ export default async function PrivacyPage() {
                     <ul className="mt-4 space-y-2.5 text-sm">
                        <li className="flex items-start gap-3"><Icon name="pin" className="mt-0.5 h-5 w-5 shrink-0 text-leaf" /><span>{business.addressOneLine}</span></li>
                        <li><A href={tel} className="flex items-center gap-3 font-semibold hover:text-leaf-dark"><Icon name="phone" className="h-5 w-5 text-leaf" />{business.phoneDisplay}</A></li>
-                       <li><A href={waLink("Hello SK IT Services! I have a question about your Privacy Policy.", business)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 font-semibold hover:text-leaf-dark"><WhatsAppIcon className="h-5 w-5 text-leaf" />WhatsApp us</A></li>
+                        <li><A href={waLink("Hello SK IT Services! I have a question about your Privacy Policy.", business)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 font-semibold hover:text-leaf-dark"><WhatsAppIcon className="h-5 w-5 text-leaf" />WhatsApp us: {business.whatsappDisplay || "011-57579656"}</A></li>
                        <li><A href={`mailto:${business.email}`} className="flex items-center gap-3 font-semibold hover:text-leaf-dark"><Icon name="mail" className="h-5 w-5 text-leaf" />{business.email}</A></li>
                     </ul>
                   )}

@@ -2,6 +2,7 @@
 
 test:
 	node scripts/test-cms.mjs
+	node scripts/test-admin-editor.mjs
 	node --check lib/cms/schema.js
 	node --check lib/cms/store.js
 	node --check lib/cms/auth.js
