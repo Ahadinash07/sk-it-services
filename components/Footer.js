@@ -64,7 +64,7 @@ export default function Footer({ content }) {
               <span className="text-lime font-bold">Powered by Trust.</span>
             </h3>
 
-            <p className="mt-3 max-w-[310px] text-xs sm:text-[13px] leading-relaxed text-white/70">
+            <p className="mt-3 max-w-[310px] text-xs sm:text-[13px] leading-relaxed text-white">
               Your trusted computer shop for laptop and desktop sales, repairs, upgrades, accessories and business IT support.
             </p>
 
@@ -217,7 +217,7 @@ export default function Footer({ content }) {
                     <span className="block text-[11px] text-white/60 font-medium leading-tight">
                       Our Store
                     </span>
-                    <span className="block text-xs text-white group-hover:text-white transition leading-snug mt-0.5">
+                    <span className="block text-xs text-white font-bold group-hover:text-white transition leading-snug mt-0.5">
                       Lot 1.36, 1st Floor, Plaza Imbi,<br />
                       Jalan Imbi, 55100 Kuala Lumpur, Malaysia.
                     </span>
@@ -234,7 +234,7 @@ export default function Footer({ content }) {
                   <span className="block text-[11px] text-white/60 font-medium leading-tight">
                     Operating Hours
                   </span>
-                  <span className="block text-xs text-white leading-snug mt-0.5">
+                  <span className="block text-xs text-white font-bold leading-snug mt-0.5">
                     Monday – Saturday: 10:00 AM – 7:00 PM<br />
                     Sunday: Closed
                   </span>
@@ -245,7 +245,7 @@ export default function Footer({ content }) {
         </div>
 
         {/* Bottom Bar: Copyright & Policy Links */}
-        <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-white sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-white font-bold sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 SK IT Services. All rights reserved.</p>
           <div className="flex items-center gap-3">
             <A href="/privacy-policy" className="hover:text-lime transition-colors">
