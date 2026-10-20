@@ -245,7 +245,7 @@ export default function Footer({ content }) {
         </div>
 
         {/* Bottom Bar: Copyright & Policy Links */}
-        <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-white sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 SK IT Services. All rights reserved.</p>
           <div className="flex items-center gap-3">
             <A href="/privacy-policy" className="hover:text-lime transition-colors">
