@@ -210,7 +210,7 @@ export default function Contact({ content }) {
     {
       icon: "pin",
       title: "Visit Our Store",
-      main: "Plaza Imbi, Kuala Lumpur",
+      main: "LOT 1.36 1ST FLOOR , PLAZA IMBI",
       sub: "Come to our store for product enquiries, repairs or consultation.",
       href: business?.mapsUrl || "https://www.google.com/maps/search/?api=1&query=Imbi+Plaza+Jalan+Imbi+Kuala+Lumpur",
       isExternal: true,

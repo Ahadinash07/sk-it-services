@@ -217,7 +217,7 @@ export default function Footer({ content }) {
                     <span className="block text-[11px] text-white/60 font-medium leading-tight">
                       Our Store
                     </span>
-                    <span className="block text-xs text-white/75 group-hover:text-white transition leading-snug mt-0.5">
+                    <span className="block text-xs text-white group-hover:text-white transition leading-snug mt-0.5">
                       Lot 1.36, 1st Floor, Plaza Imbi,<br />
                       Jalan Imbi, 55100 Kuala Lumpur, Malaysia.
                     </span>
@@ -234,7 +234,7 @@ export default function Footer({ content }) {
                   <span className="block text-[11px] text-white/60 font-medium leading-tight">
                     Operating Hours
                   </span>
-                  <span className="block text-xs text-white/75 leading-snug mt-0.5">
+                  <span className="block text-xs text-white leading-snug mt-0.5">
                     Monday – Saturday: 10:00 AM – 7:00 PM<br />
                     Sunday: Closed
                   </span>

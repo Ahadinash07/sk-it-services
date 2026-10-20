@@ -15,7 +15,7 @@
 # production
 /build
 
-# # CMS runtime data and uploaded files
+# CMS runtime data and uploaded files
 # /storage/content.json
 # /public/uploads/*
 # !/public/uploads/.gitkeep
