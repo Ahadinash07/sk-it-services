@@ -12,6 +12,7 @@ import {
   validateCollection,
 } from "@/lib/cms/schema";
 import { readContent, updateContent } from "@/lib/cms/store";
+import { isAuthenticated } from "@/lib/cms/auth";
 
 export const runtime = "nodejs";
 
@@ -30,6 +31,11 @@ function requireCollection(name) {
   return COLLECTION_SCHEMAS[name]
     ? null
     : NextResponse.json({ error: `Unknown content collection: ${name}` }, { status: 404 });
+}
+
+function requireAuth(request) {
+  if (!isAuthenticated(request)) return unauthorized();
+  return null;
 }
 
 function dataFromBody(body, preferredKey = "data") {
@@ -76,6 +82,8 @@ export async function GET(request, context) {
   const name = await collectionName(context);
   const invalid = requireCollection(name);
   if (invalid) return invalid;
+  const authError = requireAuth(request);
+  if (authError) return authError;
   try {
     const content = await readContent();
     return collectionResponse(name, cloneContent(content[name]));
@@ -89,6 +97,8 @@ export async function PUT(request, context) {
   const name = await collectionName(context);
   const invalid = requireCollection(name);
   if (invalid) return invalid;
+  const authError = requireAuth(request);
+  if (authError) return authError;
   try {
     const replacement = dataFromBody(await readJsonBody(request));
     validateCollection(name, replacement);
@@ -104,6 +114,8 @@ export async function PATCH(request, context) {
   const name = await collectionName(context);
   const invalid = requireCollection(name);
   if (invalid) return invalid;
+  const authError = requireAuth(request);
+  if (authError) return authError;
   try {
     const body = await readJsonBody(request);
     const searchParams = new URL(request.url).searchParams;
@@ -142,6 +154,8 @@ export async function POST(request, context) {
   const name = await collectionName(context);
   const invalid = requireCollection(name);
   if (invalid) return invalid;
+  const authError = requireAuth(request);
+  if (authError) return authError;
   try {
     const body = dataFromBody(await readJsonBody(request), "item");
     const content = await updateContent((current) => {
@@ -166,6 +180,8 @@ export async function DELETE(request, context) {
   const name = await collectionName(context);
   const invalid = requireCollection(name);
   if (invalid) return invalid;
+  const authError = requireAuth(request);
+  if (authError) return authError;
   try {
     const searchParams = new URL(request.url).searchParams;
     const content = await updateContent((current) => {

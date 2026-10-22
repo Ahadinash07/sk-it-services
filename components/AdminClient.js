@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowUpRight, CheckCircle2, Eye, HelpCircle, Layers3, Save, Settings2, Trash2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Eye, HelpCircle, Layers3, LogOut, Save, Settings2, Trash2 } from "lucide-react";
 import {
   ObjectEditor,
   ScalarField,
@@ -89,6 +89,7 @@ const prettyType = (type) => type === "array" ? "List" : "Page settings";
 
 async function requestJson(url, options = {}) {
   const response = await fetch(url, {
+    credentials: "include",
     ...options,
     headers: {
       ...(options.body ? { "Content-Type": "application/json" } : {}),
@@ -280,6 +281,15 @@ export default function AdminClient() {
     setError("");
   };
 
+  const logout = async () => {
+    try {
+      await fetch("/api/admin/auth", { method: "DELETE", credentials: "include" });
+    } catch {
+      // Fall back to a hard redirect even if the logout request fails.
+    }
+    window.location.assign("/admin/login");
+  };
+
   const save = async () => {
     if (Array.isArray(collection) && selectedIndex < 0 && collection.length) {
       setError("Add an item before saving this list.");
@@ -323,6 +333,7 @@ export default function AdminClient() {
             <div className="min-w-0"><p className="text-[10px] font-black uppercase tracking-[.18em] text-lime">Website editor</p><h1 className="truncate text-lg font-black">Content Studio</h1></div>
           </div>
           <a href="/" target="_blank" rel="noreferrer" className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-white/20 px-3 py-2 text-sm font-bold text-white hover:bg-white/10"><Eye className="h-4 w-4" /> <span className="hidden sm:inline">View website</span><ArrowUpRight className="h-4 w-4" /></a>
+            <button type="button" onClick={logout} className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-white/20 px-3 py-2 text-sm font-bold text-white hover:bg-white/10"><LogOut className="h-4 w-4" /> <span className="hidden sm:inline">Logout</span></button>
         </div>
       </header>
 

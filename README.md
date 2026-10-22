@@ -11,9 +11,11 @@ npm ci
 cp .env.example .env.local
 ```
 
-No login credentials are required. The admin panel opens directly:
+The admin panel opens at `/admin/login` behind an admin password. Set the credentials in the environment before running:
 
 ```env
+CMS_ADMIN_PASSWORD=change-me-admin-password
+CMS_SESSION_SECRET=change-me-session-secret
 # Optional persistent path. Defaults to storage/content.json.
 # CMS_DATA_FILE=storage/content.json
 ```
@@ -23,21 +25,22 @@ Run the app:
 ```sh
 npm run dev
 # public site: http://localhost:3000
-# CMS: http://localhost:3000/admin
+# CMS login: http://localhost:3000/admin/login
+# CMS editor: http://localhost:3000/admin
 ```
 
 The first request creates `storage/content.json` from the editable defaults. The file is intentionally ignored by git so production content and credentials never become source-controlled files. Set `CMS_DATA_FILE` when the Hostinger filesystem uses a different persistent path.
 
 ## CMS workflow
 
-1. Open `/admin` directly; there is no login screen.
+1. Open `/admin/login` and sign in with the admin password set in `CMS_ADMIN_PASSWORD`.
 2. Select a section from the left navigation. The sections are grouped as Website, Your content, and Settings.
 3. Edit the labelled input fields. Headings, paragraphs, button labels, links, icons, points, FAQs, reviews, business details, footer, legal copy, quote options, SEO metadata, and tracking settings are shown as readable fields instead of a JSON document.
 4. Use **Add** or **Remove item** for collection entries such as services, products, reviews, FAQs, navigation links, statistics, and process steps.
 5. Image fields include a live preview. Type an existing image path or use **Choose a new picture** to upload a JPEG, PNG, WebP, or GIF (up to 5 MB).
 6. Click **Save changes**, then use **View website** to check the public page. No `npm run build` is required after a content save.
 
-The write APIs require a same-origin request, but this direct-access mode is not authentication. Anyone who can access the deployed site may be able to edit the CMS. If the CMS is public on the internet, protect `/admin` and `/api/admin/*` with Hostinger Basic Auth, an IP allowlist, or a reverse proxy before launch.
+The admin routes are protected by an admin login (session cookie, 8-hour expiry). The write APIs also require a same-origin request. If the CMS is public on the internet, protect `/admin` and `/api/admin/*` with Hostinger Basic Auth, an IP allowlist, or a reverse proxy before launch.
 
 ## Editable collections
 

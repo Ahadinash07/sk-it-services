@@ -2,7 +2,8 @@ import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { NextResponse } from "next/server";
-import { forbiddenOrigin, isSameOrigin, jsonError } from "@/lib/cms/http";
+import { forbiddenOrigin, isSameOrigin, jsonError, unauthorized } from "@/lib/cms/http";
+import { isAuthenticated } from "@/lib/cms/auth";
 
 export const MAX_UPLOAD_BYTES = 5 * 1024 * 1024;
 const MAX_MULTIPART_REQUEST_BYTES = MAX_UPLOAD_BYTES + 256 * 1024;
@@ -42,6 +43,7 @@ async function atomicUpload(filePath, bytes) {
 
 export async function POST(request) {
   if (!isSameOrigin(request)) return forbiddenOrigin();
+  if (!isAuthenticated(request)) return unauthorized();
   const contentLength = Number(request.headers.get("content-length") || 0);
   if (contentLength > MAX_MULTIPART_REQUEST_BYTES) {
     return NextResponse.json({ error: "Upload is too large" }, { status: 413 });

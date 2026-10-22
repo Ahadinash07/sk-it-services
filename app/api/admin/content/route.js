@@ -6,7 +6,9 @@ import {
   jsonError,
   methodNotAllowed,
   readJsonBody,
+  unauthorized,
 } from "@/lib/cms/http";
+import { isAuthenticated } from "@/lib/cms/auth";
 import { readContent, updateContent } from "@/lib/cms/store";
 
 export const runtime = "nodejs";
@@ -36,7 +38,14 @@ function responseContent(content) {
   return NextResponse.json({ content, schema: CONTENT_SCHEMA, collections: COLLECTION_NAMES });
 }
 
+function requireAuth(request) {
+  if (!isAuthenticated(request)) return unauthorized();
+  return null;
+}
+
 export async function GET(request) {
+  const authError = requireAuth(request);
+  if (authError) return authError;
   try {
     return responseContent(await readContent());
   } catch (error) {
@@ -46,6 +55,8 @@ export async function GET(request) {
 
 export async function PUT(request) {
   if (!isSameOrigin(request)) return forbiddenOrigin();
+  const authError = requireAuth(request);
+  if (authError) return authError;
   try {
     const body = unwrapContent(await readJsonBody(request));
     validateContent(body);
@@ -57,6 +68,8 @@ export async function PUT(request) {
 
 export async function PATCH(request) {
   if (!isSameOrigin(request)) return forbiddenOrigin();
+  const authError = requireAuth(request);
+  if (authError) return authError;
   try {
     const patch = unwrapContent(await readJsonBody(request));
     if (!patch || typeof patch !== "object" || Array.isArray(patch)) {
